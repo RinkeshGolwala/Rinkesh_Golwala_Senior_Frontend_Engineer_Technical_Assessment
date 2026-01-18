@@ -1,0 +1,222 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins';
+
+.necktie-button {
+    @include mixins.brand-button();
+    @include mixins.focus-outline();
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$spacing-sm;
+    border: 2px solid transparent;
+    border-radius: vars.$border-radius-lg;
+    font-weight: vars.$font-weight-semibold;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+        transform: none !important;
+    }
+
+    // Size variations
+    &--sm {
+        min-height: 36px;
+        padding: vars.$spacing-sm vars.$spacing-md;
+        font-size: vars.$font-size-sm;
+    }
+
+    &--md {
+        min-height: vars.$touch-target-min;
+        padding: vars.$spacing-md vars.$spacing-lg;
+        font-size: vars.$font-size-base;
+    }
+
+    &--lg {
+        min-height: 52px;
+        padding: vars.$spacing-lg vars.$spacing-xl;
+        font-size: vars.$font-size-lg;
+    }
+
+    // Variant styles
+    &--primary {
+        background: vars.$color-primary;
+        color: vars.$color-white;
+        border-color: vars.$color-primary;
+
+        &:hover:not(:disabled) {
+            background: vars.$color-primary-hover;
+            border-color: vars.$color-primary-hover;
+            transform: translateY(-2px);
+            box-shadow: vars.$shadow-md;
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: vars.$shadow-sm;
+        }
+    }
+
+    &--secondary {
+        background: transparent;
+        color: vars.$color-primary;
+        border-color: vars.$color-primary;
+
+        &:hover:not(:disabled) {
+            background: vars.$color-primary-light;
+            transform: translateY(-2px);
+            box-shadow: vars.$shadow-sm;
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            background: rgba(vars.$color-primary, 0.1);
+        }
+    }
+
+    &--danger {
+        background: vars.$color-danger;
+        color: vars.$color-white;
+        border-color: vars.$color-danger;
+
+        &:hover:not(:disabled) {
+            background: vars.$color-danger-hover;
+            border-color: vars.$color-danger-hover;
+            transform: translateY(-2px);
+            box-shadow: vars.$shadow-md;
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: vars.$shadow-sm;
+        }
+    }
+
+    &--ghost {
+        background: transparent;
+        color: vars.$color-medium;
+        border-color: transparent;
+
+        &:hover:not(:disabled) {
+            background: vars.$color-gray-100;
+            color: vars.$color-dark;
+            transform: translateY(-1px);
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+            background: vars.$color-gray-200;
+        }
+    }
+
+    // Loading state
+    &--loading {
+        color: transparent;
+
+        .necktie-button__spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                animation: spin 1s linear infinite;
+            }
+
+            circle {
+                stroke: vars.$color-white;
+                animation: dash 1.5s ease-in-out infinite;
+            }
+        }
+
+        &.necktie-button--secondary,
+        &.necktie-button--ghost {
+            .necktie-button__spinner circle {
+                stroke: vars.$color-primary;
+            }
+        }
+    }
+
+    // Full width
+    &--full-width {
+        width: 100%;
+    }
+
+    // Icon only button
+    &--icon-only {
+        aspect-ratio: 1;
+        padding: 0;
+
+        &.necktie-button--sm {
+            width: 36px;
+        }
+
+        &.necktie-button--md {
+            width: vars.$touch-target-min;
+        }
+
+        &.necktie-button--lg {
+            width: 52px;
+        }
+    }
+
+    // Icon spacing
+    &__start-icon,
+    &__end-icon {
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+    }
+
+    &__text {
+        @include mixins.multilingual-text();
+    }
+}
+
+// Loading animations
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35;
+    }
+
+    100% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -124;
+    }
+}
+
+// Mobile optimizations
+@include mixins.mobile-first(tablet) {
+    .necktie-button {
+        &:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: vars.$shadow-lg;
+        }
+    }
+}
