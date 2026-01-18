@@ -1,0 +1,20 @@
+# Ignore artifacts:
+build/
+dist/
+coverage/
+.next/
+out/
+
+# Ignore generated files:
+*.min.js
+*.min.css
+
+# Ignore package files:
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore git and IDE files:
+.git/
+.vscode/
+.idea/
