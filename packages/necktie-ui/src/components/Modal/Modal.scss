@@ -1,0 +1,286 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins';
+
+.necktie-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: vars.$z-modal-backdrop;
+    background: rgba(vars.$color-dark, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: vars.$spacing-lg;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+
+    &--loading {
+        pointer-events: none;
+    }
+}
+
+.necktie-modal {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.3s ease-out forwards;
+    background: vars.$color-white;
+    border-radius: vars.$border-radius-xl;
+    box-shadow: vars.$shadow-xl;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 100%;
+    @include mixins.focus-outline();
+
+    // Size variants
+    &--sm {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    &--md {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    &--lg {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    &--xl {
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    &--full {
+        width: 95vw;
+        height: 95vh;
+        max-width: none;
+        max-height: 95vh;
+    }
+
+    // Modal sections
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: vars.$spacing-xl;
+        border-bottom: 1px solid vars.$color-gray-200;
+        background: vars.$color-gray-100;
+    }
+
+    &__title {
+        @include mixins.multilingual-text(vars.$font-size-xl);
+        margin: 0;
+        font-weight: vars.$font-weight-semibold;
+        color: vars.$color-dark;
+        flex: 1;
+    }
+
+    &__close-button {
+        margin-left: vars.$spacing-md;
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        padding: vars.$spacing-xs;
+        cursor: pointer;
+        border-radius: vars.$border-radius-sm;
+        color: vars.$color-medium;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover:not(:disabled) {
+            opacity: 0.7;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &:focus {
+            outline: 2px solid vars.$color-primary;
+            outline-offset: 2px;
+        }
+    }
+
+    &__content {
+        flex: 1;
+        padding: vars.$spacing-xl;
+        overflow-y: auto;
+        color: vars.$color-medium;
+        line-height: vars.$line-height-relaxed;
+        @include mixins.multilingual-text();
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: vars.$spacing-md;
+        padding: vars.$spacing-xl;
+        border-top: 1px solid vars.$color-gray-200;
+        background: vars.$color-gray-500;
+    }
+
+    // Loading state
+    &__loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(vars.$color-white, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+
+        &::after {
+            content: '';
+            width: 32px;
+            height: 32px;
+            border: 3px solid vars.$color-gray-300;
+            border-top: 3px solid vars.$color-primary;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    // Variant styles
+    &--confirmation {
+        .necktie-modal__header {
+            background: vars.$color-primary-light;
+            border-bottom-color: vars.$color-primary;
+        }
+
+        .necktie-modal__title {
+            color: vars.$color-primary;
+        }
+    }
+
+    &--danger {
+        .necktie-modal__header {
+            background: vars.$color-danger-light;
+            border-bottom-color: vars.$color-danger;
+        }
+
+        .necktie-modal__title {
+            color: vars.$color-danger;
+        }
+    }
+}
+
+// Mobile optimizations
+@media (max-width: #{vars.$breakpoint-tablet - 1px}) {
+    .necktie-modal-backdrop {
+        padding: vars.$spacing-md;
+    }
+
+    .necktie-modal {
+
+        &--sm,
+        &--md,
+        &--lg,
+        &--xl {
+            max-width: none;
+            width: 100%;
+            margin: 0;
+        }
+
+        &__header,
+        &__content,
+        &__footer {
+            padding: vars.$spacing-lg;
+        }
+
+        &__title {
+            font-size: vars.$font-size-lg;
+        }
+    }
+}
+
+// Confirmation modal helper classes
+.necktie-modal-actions {
+    display: flex;
+    gap: vars.$spacing-md;
+    justify-content: flex-end;
+
+    &--center {
+        justify-content: center;
+    }
+
+    &--space-between {
+        justify-content: space-between;
+    }
+
+    &--full-width {
+        .necktie-button {
+            flex: 1;
+        }
+    }
+}
+
+// Animation keyframes
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+
+    .necktie-modal-backdrop,
+    .necktie-modal {
+        animation: none;
+    }
+
+    .necktie-modal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .necktie-modal {
+        border: 2px solid vars.$color-dark;
+    }
+
+    .necktie-modal__header,
+    .necktie-modal__footer {
+        border-color: vars.$color-dark;
+    }
+}
+
+// Modal animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
