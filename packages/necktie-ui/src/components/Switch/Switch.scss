@@ -1,0 +1,302 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.necktie-switch-container {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+
+    &--with-labels {
+        gap: vars.$spacing-md;
+    }
+}
+
+.necktie-switch-external-label {
+    @include mixins.multilingual-text(vars.$font-size-sm);
+    font-weight: vars.$font-weight-medium;
+    color: vars.$color-medium;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    min-width: 28px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
+    &--active {
+        color: vars.$color-dark;
+        font-weight: vars.$font-weight-semibold;
+    }
+
+    &--off {
+        order: 1;
+    }
+
+    &--on {
+        order: 3;
+    }
+}
+
+.necktie-switch {
+    position: relative;
+    display: inline-block;
+    order: 2;
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 3;
+        margin: 0;
+    }
+
+    &__track {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: vars.$color-gray-300;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border: 2px solid transparent;
+
+        &:focus-within {
+            @include mixins.focus-outline();
+        }
+    }
+
+    &__thumb {
+        position: absolute;
+        background: vars.$color-white;
+        border-radius: 50%;
+        box-shadow: vars.$shadow-sm;
+        transition: all 0.2s ease-in-out;
+        z-index: 2;
+    }
+
+    // Size variants
+    &--sm {
+        .necktie-switch__track {
+            width: 36px;
+            height: 20px;
+        }
+
+        .necktie-switch__thumb {
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            top: 2px;
+        }
+    }
+
+    &--md {
+        .necktie-switch__track {
+            width: 44px;
+            height: 24px;
+        }
+
+        .necktie-switch__thumb {
+            width: 20px;
+            height: 20px;
+            left: 2px;
+            top: 2px;
+        }
+    }
+
+    &--lg {
+        .necktie-switch__track {
+            width: 52px;
+            height: 28px;
+        }
+
+        .necktie-switch__thumb {
+            width: 24px;
+            height: 24px;
+            left: 2px;
+            top: 2px;
+        }
+    }
+
+    // Color variants
+    &--primary {
+        &.necktie-switch--checked {
+            .necktie-switch__track {
+                background: vars.$color-primary;
+            }
+        }
+    }
+
+    &--neutral {
+        &.necktie-switch--checked {
+            .necktie-switch__track {
+                background: vars.$color-gray-600;
+            }
+        }
+    }
+
+    // Checked state
+    &--checked {
+        .necktie-switch__thumb {
+            transform: translateX(calc(100% + 4px));
+        }
+
+        &.necktie-switch--sm {
+            .necktie-switch__thumb {
+                transform: translateX(16px);
+            }
+        }
+
+        &.necktie-switch--md {
+            .necktie-switch__thumb {
+                transform: translateX(20px);
+            }
+        }
+
+        &.necktie-switch--lg {
+            .necktie-switch__thumb {
+                transform: translateX(24px);
+            }
+        }
+    }
+
+    // Disabled state
+    &--disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+
+        .necktie-switch__track {
+            cursor: not-allowed;
+            background: vars.$color-gray-200;
+        }
+
+        &.necktie-switch--checked {
+            .necktie-switch__track {
+                background: vars.$color-gray-400;
+            }
+        }
+    }
+
+    // Hover states
+    &:not(.necktie-switch--disabled):hover {
+        .necktie-switch__track {
+            box-shadow: vars.$shadow-sm;
+        }
+    }
+
+    // Active state
+    &:not(.necktie-switch--disabled):active {
+        .necktie-switch__thumb {
+            transform: scale(0.95);
+        }
+
+        &.necktie-switch--checked {
+            .necktie-switch__thumb {
+                transform: translateX(calc(100% + 4px)) scale(0.95);
+            }
+
+            &.necktie-switch--sm {
+                .necktie-switch__thumb {
+                    transform: translateX(16px) scale(0.95);
+                }
+            }
+
+            &.necktie-switch--md {
+                .necktie-switch__thumb {
+                    transform: translateX(20px) scale(0.95);
+                }
+            }
+
+            &.necktie-switch--lg {
+                .necktie-switch__thumb {
+                    transform: translateX(24px) scale(0.95);
+                }
+            }
+        }
+    }
+}
+
+// Switch wrapper for labels and descriptions
+.necktie-switch-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: vars.$spacing-md;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: vars.$spacing-xs;
+    }
+
+    &__label {
+        @include mixins.multilingual-text(vars.$font-size-base);
+        font-weight: vars.$font-weight-medium;
+        color: vars.$color-dark;
+        cursor: pointer;
+        user-select: none;
+
+        .necktie-switch-wrapper--disabled & {
+            color: vars.$color-medium;
+            cursor: not-allowed;
+        }
+    }
+
+    &__description {
+        @include mixins.multilingual-text(vars.$font-size-sm);
+        color: vars.$color-medium;
+        line-height: vars.$line-height-relaxed;
+    }
+
+    &--label-left {
+        flex-direction: row-reverse;
+    }
+
+    &--label-right {
+        flex-direction: row;
+    }
+
+    // Alignment adjustments
+    &--label-left,
+    &--label-right {
+        .necktie-switch-container {
+            margin-top: 2px; // Align with first line of text
+        }
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .necktie-switch {
+        &__track {
+            border-color: vars.$color-dark;
+        }
+
+        &--checked {
+            .necktie-switch__track {
+                border-color: vars.$color-primary;
+            }
+        }
+
+        &--disabled {
+            .necktie-switch__track {
+                border-color: vars.$color-gray-400;
+            }
+        }
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    .necktie-switch {
+
+        &__track,
+        &__thumb {
+            transition: none;
+        }
+    }
+
+    .necktie-switch-external-label {
+        transition: none;
+    }
+}
