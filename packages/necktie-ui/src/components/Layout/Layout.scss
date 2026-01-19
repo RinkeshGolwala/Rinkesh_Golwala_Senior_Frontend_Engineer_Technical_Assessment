@@ -1,0 +1,315 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins';
+
+.necktie-layout {
+  @include mixins.multilingual-text();
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: vars.$color-white;
+
+  // Header Styles
+  &__header {
+    background-color: vars.$color-white;
+    border-bottom: 1px solid vars.$color-gray-200;
+    box-shadow: vars.$shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: vars.$z-sticky;
+  }
+
+  &__header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 vars.$spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+
+    @include mixins.mobile-first(tablet) {
+      padding: 0 vars.$spacing-lg;
+      height: 56px;
+    }
+  }
+
+  // Logo/Brand
+  &__logo {
+    h1 {
+      color: vars.$color-primary;
+      font-size: vars.$font-size-2xl;
+      font-weight: vars.$font-weight-bold;
+      margin: 0;
+
+      @media (max-width: vars.$breakpoint-tablet) {
+        font-size: vars.$font-size-xl;
+      }
+    }
+  }
+
+  // Navigation Styles
+  &__nav {
+    &--desktop {
+      @media (max-width: vars.$breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: vars.$z-modal-backdrop;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.3s, opacity 0.3s;
+
+      @include mixins.mobile-first(tablet) {
+        display: none;
+      }
+
+      .necktie-layout--mobile-menu-open & {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__mobile-nav-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(vars.$color-dark, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  &__mobile-nav-drawer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 80vw;
+    background-color: vars.$color-white;
+    box-shadow: vars.$shadow-xl;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: vars.$spacing-xl 0;
+
+    .necktie-layout--mobile-menu-open & {
+      transform: translateX(0);
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    .necktie-layout__nav--desktop & {
+      gap: vars.$spacing-sm;
+    }
+
+    .necktie-layout__nav--mobile & {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__nav-link {
+    background: none;
+    border: none;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    font-size: vars.$font-size-base;
+    font-weight: vars.$font-weight-medium;
+    color: vars.$color-medium;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: vars.$border-radius-md;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    .necktie-layout__nav--desktop & {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .necktie-layout__nav--mobile & {
+      padding: vars.$spacing-md vars.$spacing-xl;
+      border-radius: 0;
+      border-bottom: 1px solid vars.$color-gray-100;
+    }
+
+    &:hover {
+      color: vars.$color-primary;
+      background-color: vars.$color-primary-light;
+    }
+
+    &:focus {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      color: vars.$color-primary;
+      background-color: vars.$color-primary-light;
+      font-weight: vars.$font-weight-semibold;
+
+      .necktie-layout__nav--mobile & {
+        background-color: transparent;
+        border-left: 4px solid vars.$color-primary;
+      }
+    }
+  }
+
+  // Header Actions (Avatar + Mobile Menu)
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+  }
+
+  // User Avatar
+  &__user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: vars.$color-primary;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(vars.$color-primary, 0.2);
+
+    &:hover {
+      background-color: vars.$color-primary-hover;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(vars.$color-primary, 0.3);
+    }
+
+    &:focus {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__user-initials {
+    color: vars.$color-white;
+    font-size: vars.$font-size-sm;
+    font-weight: vars.$font-weight-semibold;
+    text-transform: uppercase;
+  }
+
+  // Mobile Menu Button (Hamburger)
+  &__mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: vars.$spacing-sm;
+    border-radius: vars.$border-radius-sm;
+    transition: background-color 0.2s ease;
+
+    @media (max-width: vars.$breakpoint-tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      background-color: vars.$color-gray-100;
+    }
+
+    &:focus {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 20px;
+    height: 16px;
+
+    span {
+      width: 100%;
+      height: 2px;
+      background-color: vars.$color-dark;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .necktie-layout--mobile-menu-open & {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+  }
+
+  // Main Content
+  &__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: vars.$spacing-xl vars.$spacing-md;
+    width: 100%;
+    flex: 1;
+
+    @media (max-width: vars.$breakpoint-tablet) {
+      padding: vars.$spacing-lg vars.$spacing-sm;
+    }
+  }
+
+  // Body scroll lock when mobile menu is open
+  &--mobile-menu-open {
+    @media (max-width: vars.$breakpoint-tablet) {
+      body {
+        overflow: hidden;
+      }
+    }
+  }
+
+  // Animations
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
