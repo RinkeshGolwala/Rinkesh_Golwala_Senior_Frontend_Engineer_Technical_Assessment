@@ -86,4 +86,6 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
 
 Skeleton.displayName = 'Skeleton';
 
+export { SkeletonDoctorCard, SkeletonBookingCard } from './sub-components';
+export type { SkeletonDoctorCardProps, SkeletonBookingCardProps } from './sub-components';
 export default Skeleton;

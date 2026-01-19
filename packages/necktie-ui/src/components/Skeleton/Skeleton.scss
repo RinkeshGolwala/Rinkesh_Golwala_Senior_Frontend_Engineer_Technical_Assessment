@@ -162,6 +162,66 @@
 }
 
 // Mobile optimizations
+@include mixins.mobile-first(mobile) {
+    .necktie-skeleton-doctor {
+        padding: vars.$spacing-md;
+        gap: vars.$spacing-sm;
+
+        &__header {
+            gap: vars.$spacing-sm;
+        }
+
+        &__avatar {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        &__info {
+            gap: vars.$spacing-xs;
+
+            .necktie-skeleton {
+                &:first-child {
+                    width: 140px !important;
+                    height: 1rem !important;
+                }
+
+                &:last-child {
+                    width: 80px !important;
+                    height: 0.875rem !important;
+                }
+            }
+        }
+
+        &__footer {
+            flex-direction: column;
+            gap: vars.$spacing-sm;
+            margin-top: vars.$spacing-sm;
+            padding-top: vars.$spacing-sm;
+
+            .necktie-skeleton {
+                width: 100% !important;
+                height: 32px !important;
+            }
+        }
+    }
+
+    .necktie-skeleton-booking {
+        padding: vars.$spacing-md;
+        gap: vars.$spacing-sm;
+
+        &__actions {
+            flex-direction: column;
+            gap: vars.$spacing-sm;
+            margin-top: vars.$spacing-sm;
+
+            .necktie-skeleton {
+                width: 100% !important;
+                height: 32px !important;
+            }
+        }
+    }
+}
+
 @include mixins.mobile-first(tablet) {
     .necktie-skeleton {
         &--text {
