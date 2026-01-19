@@ -10,7 +10,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Time slot components for selecting appointment times. Includes individual time slot pills and a complete time slot list.',
+        component:
+          'Time slot components for selecting appointment times. Includes individual time slot pills and a complete time slot list.',
       },
     },
   },
@@ -33,18 +34,17 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<{
-    time: string;
-    selected?: boolean;
-    disabled?: boolean;
+  time: string;
+  selected?: boolean;
+  disabled?: boolean;
 }>;
 
-const mockOpeningHour: OpeningHour =
-  {
-    day: 'TUE',
-    end: '19.50',
-    isClosed: false,
-    start: '9.50'
-  };
+const mockOpeningHour: OpeningHour = {
+  day: 'TUE',
+  end: '19.50',
+  isClosed: false,
+  start: '9.50',
+};
 
 export const Default: Story = {
   args: {
@@ -83,11 +83,11 @@ export const TimeSlotListExample: Story = {
   render: () => {
     const [selectedTime, setSelectedTime] = useState<string>('');
     const today = new Date();
-    
+
     // Set to next Monday for demonstration
     const nextMonday = new Date(today);
-    nextMonday.setDate(today.getDate() + (1 + 7 - today.getDay()) % 7);
-    
+    nextMonday.setDate(today.getDate() + ((1 + 7 - today.getDay()) % 7));
+
     return (
       <div style={{ maxWidth: '500px', padding: '1rem' }}>
         <TimeSlotList
@@ -106,7 +106,7 @@ export const TimeSlotListToday: Story = {
   render: () => {
     const [selectedTime, setSelectedTime] = useState<string>('');
     const today = new Date();
-    
+
     return (
       <div style={{ maxWidth: '500px', padding: '1rem' }}>
         <TimeSlotList
@@ -127,12 +127,15 @@ export const NoAvailableSlots: Story = {
   args: {},
   render: () => {
     const closedHours: OpeningHour = {
-      day: 'MON', start: '9.00', end: '17.00', isClosed: true
+      day: 'MON',
+      start: '9.00',
+      end: '17.00',
+      isClosed: true,
     };
-    
+
     const monday = new Date();
-    monday.setDate(monday.getDate() + (1 + 7 - monday.getDay()) % 7);
-    
+    monday.setDate(monday.getDate() + ((1 + 7 - monday.getDay()) % 7));
+
     return (
       <div style={{ maxWidth: '500px', padding: '1rem' }}>
         <TimeSlotList
@@ -150,14 +153,17 @@ export const ShortHours: Story = {
   args: {},
   render: () => {
     const [selectedTime, setSelectedTime] = useState<string>('');
-    
+
     const shortHours: OpeningHour = {
-      day: 'MON', start: '14.00', end: '16.00', isClosed: false
+      day: 'MON',
+      start: '14.00',
+      end: '16.00',
+      isClosed: false,
     };
-    
+
     const monday = new Date();
-    monday.setDate(monday.getDate() + (1 + 7 - monday.getDay()) % 7);
-    
+    monday.setDate(monday.getDate() + ((1 + 7 - monday.getDay()) % 7));
+
     return (
       <div style={{ maxWidth: '500px', padding: '1rem' }}>
         <TimeSlotList

@@ -2,13 +2,19 @@ import React from 'react';
 import clsx from 'clsx';
 import './Switch.scss';
 
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'role' | 'size' | 'onChange'> {
+export interface SwitchProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'role' | 'size' | 'onChange'
+> {
   /** Unique identifier for the switch */
   id: string;
   /** Whether the switch is checked */
   checked?: boolean;
   /** Callback when switch state changes */
-  onChange?: (checked: boolean, event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    checked: boolean,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void;
   /** Switch size variant */
   size?: 'sm' | 'md' | 'lg';
   /** Switch color variant */
@@ -55,24 +61,25 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     };
 
     const switchElement = (
-      <div className={clsx(
-        'necktie-switch-container',
-        {
+      <div
+        className={clsx('necktie-switch-container', {
           'necktie-switch-container--with-labels': showStateLabels,
-        }
-      )}>
+        })}
+      >
         {showStateLabels && (
-          <span className={clsx(
-            'necktie-switch-external-label',
-            'necktie-switch-external-label--off',
-            {
-              'necktie-switch-external-label--active': !checked,
-            }
-          )}>
+          <span
+            className={clsx(
+              'necktie-switch-external-label',
+              'necktie-switch-external-label--off',
+              {
+                'necktie-switch-external-label--active': !checked,
+              }
+            )}
+          >
             {offLabel || 'OFF'}
           </span>
         )}
-        
+
         <div
           className={clsx(
             'necktie-switch',
@@ -104,13 +111,15 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         </div>
 
         {showStateLabels && (
-          <span className={clsx(
-            'necktie-switch-external-label',
-            'necktie-switch-external-label--on',
-            {
-              'necktie-switch-external-label--active': checked,
-            }
-          )}>
+          <span
+            className={clsx(
+              'necktie-switch-external-label',
+              'necktie-switch-external-label--on',
+              {
+                'necktie-switch-external-label--active': checked,
+              }
+            )}
+          >
             {onLabel || 'ON'}
           </span>
         )}
@@ -122,13 +131,15 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     }
 
     return (
-      <div className={clsx(
-        'necktie-switch-wrapper',
-        `necktie-switch-wrapper--label-${labelPosition}`,
-        {
-          'necktie-switch-wrapper--disabled': disabled,
-        }
-      )}>
+      <div
+        className={clsx(
+          'necktie-switch-wrapper',
+          `necktie-switch-wrapper--label-${labelPosition}`,
+          {
+            'necktie-switch-wrapper--disabled': disabled,
+          }
+        )}
+      >
         {labelPosition === 'left' && (label || description) && (
           <div className="necktie-switch-wrapper__content">
             {label && (
@@ -137,15 +148,18 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               </label>
             )}
             {description && (
-              <div id={`${id}-description`} className="necktie-switch-wrapper__description">
+              <div
+                id={`${id}-description`}
+                className="necktie-switch-wrapper__description"
+              >
                 {description}
               </div>
             )}
           </div>
         )}
-        
+
         {switchElement}
-        
+
         {labelPosition === 'right' && (label || description) && (
           <div className="necktie-switch-wrapper__content">
             {label && (
@@ -154,7 +168,10 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               </label>
             )}
             {description && (
-              <div id={`${id}-description`} className="necktie-switch-wrapper__description">
+              <div
+                id={`${id}-description`}
+                className="necktie-switch-wrapper__description"
+              >
                 {description}
               </div>
             )}

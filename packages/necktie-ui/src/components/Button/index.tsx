@@ -76,11 +76,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {startIcon}
           </span>
         )}
-        {children && (
-          <span className="necktie-button__text">
-            {children}
-          </span>
-        )}
+        {children && <span className="necktie-button__text">{children}</span>}
         {!loading && endIcon && (
           <span className="necktie-button__end-icon" aria-hidden="true">
             {endIcon}

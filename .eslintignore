@@ -1,0 +1,31 @@
+# Editor configuration
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+storybook-static/
+
+# Testing
+coverage/
+.nyc_output
+
+# Environment files
+.env
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Turbo
+.turbo

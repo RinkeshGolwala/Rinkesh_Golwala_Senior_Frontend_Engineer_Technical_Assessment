@@ -8,7 +8,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A versatile button component with brand styling, multiple variants, sizes, and states. Optimized for mobile-first design with touch-friendly interactions.',
+        component:
+          'A versatile button component with brand styling, multiple variants, sizes, and states. Optimized for mobile-first design with touch-friendly interactions.',
       },
     },
   },
@@ -104,10 +105,23 @@ export const IconOnly: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button size="sm" variant="primary">Small</Button>
-      <Button size="md" variant="primary">Medium</Button>
-      <Button size="lg" variant="primary">Large</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: '1rem',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button size="sm" variant="primary">
+        Small
+      </Button>
+      <Button size="md" variant="primary">
+        Medium
+      </Button>
+      <Button size="lg" variant="primary">
+        Large
+      </Button>
     </div>
   ),
 };
@@ -145,9 +159,7 @@ export const InternationalSupport: Story = {
         <Button variant="secondary">
           {isChineseLocale ? '取消預約' : 'Cancel Booking'}
         </Button>
-        <Button variant="danger">
-          {isChineseLocale ? '刪除' : 'Delete'}
-        </Button>
+        <Button variant="danger">{isChineseLocale ? '刪除' : 'Delete'}</Button>
       </div>
     );
   },

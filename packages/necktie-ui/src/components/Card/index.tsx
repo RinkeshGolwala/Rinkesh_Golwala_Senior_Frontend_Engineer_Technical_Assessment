@@ -49,24 +49,12 @@ const Card = React.forwardRef<HTMLButtonElement, CardProps>(
         {...props}
       >
         {loading && <div className="necktie-card__loading-overlay" />}
-        
-        {header && (
-          <div className="necktie-card__header">
-            {header}
-          </div>
-        )}
-        
-        {children && (
-          <div className="necktie-card__content">
-            {children}
-          </div>
-        )}
-        
-        {footer && (
-          <div className="necktie-card__footer">
-            {footer}
-          </div>
-        )}
+
+        {header && <div className="necktie-card__header">{header}</div>}
+
+        {children && <div className="necktie-card__content">{children}</div>}
+
+        {footer && <div className="necktie-card__footer">{footer}</div>}
       </button>
     );
   }

@@ -26,7 +26,10 @@ export interface TimeSlotListProps extends React.HTMLAttributes<HTMLDivElement> 
 }
 
 const TimeSlot = React.forwardRef<HTMLButtonElement, TimeSlotProps>(
-  ({ time, selected = false, disabled = false, className, children, ...props }, ref) => {
+  (
+    { time, selected = false, disabled = false, className, children, ...props },
+    ref
+  ) => {
     return (
       <button
         ref={ref}
@@ -51,21 +54,24 @@ const TimeSlot = React.forwardRef<HTMLButtonElement, TimeSlotProps>(
 TimeSlot.displayName = 'TimeSlot';
 
 const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
-  ({
-    selectedDate,
-    openingHour,
-    selectedTime,
-    onTimeSelect,
-    slotDuration = 60,
-    className,
-    ...props
-  }, ref) => {
+  (
+    {
+      selectedDate,
+      openingHour,
+      selectedTime,
+      onTimeSelect,
+      slotDuration = 60,
+      className,
+      ...props
+    },
+    ref
+  ) => {
     const generateTimeSlots = () => {
       // Check if the day is closed
       if (openingHour.isClosed) return [];
 
       const slots = [];
-      
+
       // Convert time string to minutes (e.g., "9.50" -> 9*60 + 50 = 590)
       const parseTime = (timeStr: string) => {
         const [hours, minutes] = timeStr.split('.').map(Number);
@@ -76,7 +82,8 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
       const formatTime = (minutes: number) => {
         const hours = Math.floor(minutes / 60);
         const mins = minutes % 60;
-        const padZero = (num: number) => num < 10 ? `0${num}` : num.toString();
+        const padZero = (num: number) =>
+          num < 10 ? `0${num}` : num.toString();
         return `${padZero(hours)}:${padZero(mins)}`;
       };
 
@@ -86,11 +93,13 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
       // Check if the selected date is today
       const today = new Date();
       const isToday = selectedDate.toDateString() === today.toDateString();
-      const currentMinutes = isToday ? today.getHours() * 60 + today.getMinutes() : 0;
+      const currentMinutes = isToday
+        ? today.getHours() * 60 + today.getMinutes()
+        : 0;
 
       for (let time = startMinutes; time < endMinutes; time += slotDuration) {
         const slotEndTime = time + slotDuration;
-        
+
         // Skip slots that have already passed today
         if (isToday && slotEndTime <= currentMinutes) {
           continue;
@@ -104,7 +113,7 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
         slots.push({
           time: formatTime(time),
           value: formatTime(time),
-          disabled: false
+          disabled: false,
         });
       }
 
@@ -123,7 +132,11 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
       return (
         <div
           ref={ref}
-          className={clsx('necktie-timeslot-list', 'necktie-timeslot-list--empty', className)}
+          className={clsx(
+            'necktie-timeslot-list',
+            'necktie-timeslot-list--empty',
+            className
+          )}
           {...props}
         >
           <p className="necktie-timeslot-list__empty-message">
@@ -142,17 +155,17 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
         <div className="necktie-timeslot-list__header">
           <h4 className="necktie-timeslot-list__title">Available Times</h4>
           <p className="necktie-timeslot-list__date">
-            {selectedDate.toLocaleDateString('en-US', { 
-              weekday: 'long', 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
+            {selectedDate.toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
             })}
           </p>
         </div>
-        
+
         <div className="necktie-timeslot-list__slots">
-          {timeSlots.map(slot => (
+          {timeSlots.map((slot) => (
             <TimeSlot
               key={slot.value}
               time={slot.time}

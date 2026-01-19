@@ -47,9 +47,16 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const { locale } = context.globals;
-      
+
       return (
-        <div lang={locale} style={{ fontFamily: locale?.startsWith('zh') ? 'PingFang TC, Microsoft YaHei, sans-serif' : undefined }}>
+        <div
+          lang={locale}
+          style={{
+            fontFamily: locale?.startsWith('zh')
+              ? 'PingFang TC, Microsoft YaHei, sans-serif'
+              : undefined,
+          }}
+        >
           <Story />
         </div>
       );

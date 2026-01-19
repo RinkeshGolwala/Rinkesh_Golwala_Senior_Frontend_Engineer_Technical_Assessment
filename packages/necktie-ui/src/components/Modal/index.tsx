@@ -83,7 +83,11 @@ const Modal: React.FC<ModalProps> = ({
   }, [open]);
 
   const handleBackdropClick = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget && closeOnBackdropClick && !loading) {
+    if (
+      event.target === event.currentTarget &&
+      closeOnBackdropClick &&
+      !loading
+    ) {
       onClose();
     }
   };
@@ -92,12 +96,9 @@ const Modal: React.FC<ModalProps> = ({
 
   const modalContent = (
     <div
-      className={clsx(
-        'necktie-modal-backdrop',
-        {
-          'necktie-modal-backdrop--loading': loading,
-        }
-      )}
+      className={clsx('necktie-modal-backdrop', {
+        'necktie-modal-backdrop--loading': loading,
+      })}
       onClick={handleBackdropClick}
     >
       <div
@@ -114,7 +115,7 @@ const Modal: React.FC<ModalProps> = ({
         tabIndex={-1}
       >
         {loading && <div className="necktie-modal__loading-overlay" />}
-        
+
         {(title || showCloseButton) && (
           <div className="necktie-modal__header">
             {title && (
@@ -130,23 +131,22 @@ const Modal: React.FC<ModalProps> = ({
                 className="necktie-modal__close-button"
                 aria-label="Close modal"
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M8 6.586L13.657.93A1 1 0 0115.07 2.343L9.414 8l5.657 5.657a1 1 0 01-1.414 1.414L8 9.414l-5.657 5.657a1 1 0 01-1.414-1.414L6.586 8 .929 2.343A1 1 0 012.343.93L8 6.586z"/>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                >
+                  <path d="M8 6.586L13.657.93A1 1 0 0115.07 2.343L9.414 8l5.657 5.657a1 1 0 01-1.414 1.414L8 9.414l-5.657 5.657a1 1 0 01-1.414-1.414L6.586 8 .929 2.343A1 1 0 012.343.93L8 6.586z" />
                 </svg>
               </button>
             )}
           </div>
         )}
 
-        <div className="necktie-modal__content">
-          {children}
-        </div>
+        <div className="necktie-modal__content">{children}</div>
 
-        {footer && (
-          <div className="necktie-modal__footer">
-            {footer}
-          </div>
-        )}
+        {footer && <div className="necktie-modal__footer">{footer}</div>}
       </div>
     </div>
   );

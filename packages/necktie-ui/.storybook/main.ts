@@ -4,7 +4,7 @@ const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions', 
+    '@storybook/addon-interactions',
     '@storybook/addon-links',
   ],
   framework: {
@@ -16,7 +16,8 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
   docs: {

@@ -40,11 +40,8 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       return (
         <div
           ref={ref}
-          className={clsx(
-            'necktie-skeleton-container',
-            className
-          )}
-          style={{width}}
+          className={clsx('necktie-skeleton-container', className)}
+          style={{ width }}
           {...props}
         >
           {Array.from({ length: lines }, (_, index) => (
@@ -87,5 +84,8 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
 Skeleton.displayName = 'Skeleton';
 
 export { SkeletonDoctorCard, SkeletonBookingCard } from './sub-components';
-export type { SkeletonDoctorCardProps, SkeletonBookingCardProps } from './sub-components';
+export type {
+  SkeletonDoctorCardProps,
+  SkeletonBookingCardProps,
+} from './sub-components';
 export default Skeleton;

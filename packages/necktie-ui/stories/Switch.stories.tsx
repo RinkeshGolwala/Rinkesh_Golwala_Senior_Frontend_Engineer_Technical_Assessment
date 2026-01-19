@@ -9,7 +9,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A toggle switch component for binary choices. Perfect for language switching, settings, and feature toggles with accessible design and smooth animations.',
+        component:
+          'A toggle switch component for binary choices. Perfect for language switching, settings, and feature toggles with accessible design and smooth animations.',
       },
     },
   },
@@ -80,61 +81,79 @@ export const LanguageSwitch: Story = {
   },
   render: (args) => {
     const [isChineseMode, setIsChineseMode] = useState(false);
-    
+
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2rem',
+          alignItems: 'center',
+        }}
+      >
         <Switch
           {...args}
           checked={isChineseMode}
           onChange={(checked) => setIsChineseMode(checked)}
           label={isChineseMode ? '語言模式' : 'Language Mode'}
-          description={isChineseMode ? '切換至英文模式' : 'Switch to Chinese mode'}
-          onLabel='中'
-          offLabel='EN'
+          description={
+            isChineseMode ? '切換至英文模式' : 'Switch to Chinese mode'
+          }
+          onLabel="中"
+          offLabel="EN"
           showStateLabels
           variant="neutral"
           size="lg"
         />
-        
+
         {/* Demo content that changes based on language */}
-        <div style={{ 
-          padding: '1.5rem', 
-          backgroundColor: '#f8f9fa', 
-          borderRadius: '8px', 
-          textAlign: 'center',
-          minWidth: '300px'
-        }}>
+        <div
+          style={{
+            padding: '1.5rem',
+            backgroundColor: '#f8f9fa',
+            borderRadius: '8px',
+            textAlign: 'center',
+            minWidth: '300px',
+          }}
+        >
           <h3 style={{ margin: '0 0 1rem 0' }}>
             {isChineseMode ? '預約確認' : 'Appointment Confirmation'}
           </h3>
           <p style={{ margin: '0 0 1rem 0' }}>
-            {isChineseMode 
-              ? '您的預約已成功確認。張醫生將於明天下午2點為您看診。' 
-              : 'Your appointment has been confirmed. Dr. Zhang will see you tomorrow at 2:00 PM.'
-            }
+            {isChineseMode
+              ? '您的預約已成功確認。張醫生將於明天下午2點為您看診。'
+              : 'Your appointment has been confirmed. Dr. Zhang will see you tomorrow at 2:00 PM.'}
           </p>
-          <div style={{ 
-            display: 'flex', 
-            gap: '0.5rem', 
-            justifyContent: 'center',
-            fontFamily: isChineseMode ? 'system-ui, -apple-system, sans-serif' : 'inherit'
-          }}>
-            <button style={{ 
-              padding: '0.5rem 1rem', 
-              backgroundColor: '#007bff', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '4px' 
-            }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              justifyContent: 'center',
+              fontFamily: isChineseMode
+                ? 'system-ui, -apple-system, sans-serif'
+                : 'inherit',
+            }}
+          >
+            <button
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#007bff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+              }}
+            >
               {isChineseMode ? '重新安排' : 'Reschedule'}
             </button>
-            <button style={{ 
-              padding: '0.5rem 1rem', 
-              backgroundColor: '#dc3545', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '4px' 
-            }}>
+            <button
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+              }}
+            >
               {isChineseMode ? '取消預約' : 'Cancel'}
             </button>
           </div>
@@ -145,7 +164,8 @@ export const LanguageSwitch: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'A language toggle switch that demonstrates switching between English and Chinese content in real-time.',
+        story:
+          'A language toggle switch that demonstrates switching between English and Chinese content in real-time.',
       },
     },
   },

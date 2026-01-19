@@ -9,7 +9,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Calendar component for selecting available appointment dates based on opening hours.',
+        component:
+          'Calendar component for selecting available appointment dates based on opening hours.',
       },
     },
   },
@@ -28,7 +29,7 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<{
-    openingHours: OpeningHour[],
+  openingHours: OpeningHour[];
 }>;
 
 const mockOpeningHours: OpeningHour[] = [
@@ -36,44 +37,44 @@ const mockOpeningHours: OpeningHour[] = [
     day: 'TUE',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'FRI',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'SUN',
     end: '18.00',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'MON',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'THU',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'WED',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
+    start: '9.50',
   },
   {
     day: 'SAT',
     end: '19.50',
     isClosed: false,
-    start: '9.50'
-  }
+    start: '9.50',
+  },
 ];
 
 export const Default: Story = {
@@ -85,7 +86,7 @@ export const Default: Story = {
 export const Interactive: Story = {
   render: (args) => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-    
+
     return (
       <Calendar
         {...args}
@@ -100,7 +101,7 @@ export const Interactive: Story = {
 export const WeekdaysOnly: Story = {
   render: (args) => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-    
+
     const weekdayHours: OpeningHour[] = [
       { day: 'MON', start: '8.00', end: '18.00', isClosed: false },
       { day: 'TUE', start: '8.00', end: '18.00', isClosed: false },
@@ -110,7 +111,7 @@ export const WeekdaysOnly: Story = {
       { day: 'SAT', start: '8.00', end: '18.00', isClosed: true },
       { day: 'SUN', start: '8.00', end: '18.00', isClosed: true },
     ];
-    
+
     return (
       <Calendar
         {...args}
@@ -125,13 +126,13 @@ export const WeekdaysOnly: Story = {
 export const LimitedAvailability: Story = {
   render: (args) => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-    
+
     const limitedHours: OpeningHour[] = [
       { day: 'TUE', start: '14.00', end: '17.00', isClosed: false },
       { day: 'THU', start: '10.00', end: '12.00', isClosed: false },
       { day: 'SAT', start: '9.00', end: '13.00', isClosed: false },
     ];
-    
+
     return (
       <Calendar
         {...args}
@@ -146,7 +147,7 @@ export const LimitedAvailability: Story = {
 export const MobileView: Story = {
   render: (args) => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-    
+
     return (
       <div style={{ width: '320px', padding: '1rem' }}>
         <Calendar

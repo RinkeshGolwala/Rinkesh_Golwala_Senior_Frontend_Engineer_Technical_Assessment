@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Skeleton, { SkeletonDoctorCard, SkeletonBookingCard } from '../src/components/Skeleton';
+import Skeleton, {
+  SkeletonDoctorCard,
+  SkeletonBookingCard,
+} from '../src/components/Skeleton';
 
 const meta = {
   title: 'Components/Skeleton',
@@ -8,7 +11,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Loading skeleton component with various shapes and animations. Used to indicate content is loading while maintaining layout structure.',
+        component:
+          'Loading skeleton component with various shapes and animations. Used to indicate content is loading while maintaining layout structure.',
       },
     },
   },
@@ -127,7 +131,13 @@ export const DoctorsListSkeleton: Story = {
 
 export const SkeletonAnimations: Story = {
   render: () => (
-    <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))' }}>
+    <div
+      style={{
+        display: 'grid',
+        gap: '2rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+      }}
+    >
       <div>
         <h4>Wave Animation (Default)</h4>
         <SkeletonDoctorCard animation="wave" />
@@ -135,7 +145,7 @@ export const SkeletonAnimations: Story = {
           <SkeletonBookingCard animation="wave" />
         </div>
       </div>
-      
+
       <div>
         <h4>Pulse Animation</h4>
         <SkeletonDoctorCard animation="pulse" />
@@ -143,7 +153,7 @@ export const SkeletonAnimations: Story = {
           <SkeletonBookingCard animation="pulse" />
         </div>
       </div>
-      
+
       <div>
         <h4>No Animation</h4>
         <SkeletonDoctorCard animation="none" />
