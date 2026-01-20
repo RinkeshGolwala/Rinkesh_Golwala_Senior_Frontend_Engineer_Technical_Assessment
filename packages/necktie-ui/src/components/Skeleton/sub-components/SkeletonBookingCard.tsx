@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import Skeleton from '../index';
+import Skeleton from '../Skeleton';
 
 export interface SkeletonBookingCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Animation type */

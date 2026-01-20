@@ -60,7 +60,7 @@
     &:lang(zh-HK),
     &:lang(zh-TW) {
         font-family: vars.$font-family-chinese;
-        font-size: #{if($size == vars.$font-size-base, vars.$font-size-chinese-base, $size * 1.125)};
+        font-size: #{if(sass($size == vars.$font-size-base): vars.$font-size-chinese-base; else: $size * 1.125)};
         line-height: vars.$line-height-relaxed;
     }
 }
