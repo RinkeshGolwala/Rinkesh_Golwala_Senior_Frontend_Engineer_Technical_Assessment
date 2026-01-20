@@ -87,25 +87,23 @@
     font-weight: vars.$font-weight-semibold;
     border: 2px solid transparent;
 
-    @if $variant ==primary {
+    @if $variant == primary {
         background: vars.$color-primary;
         color: vars.$color-white;
 
         &:hover:not(:disabled) {
             background: vars.$color-primary-hover;
-            transform: translateY(-2px);
             box-shadow: vars.$shadow-md;
         }
     }
 
-    @else if $variant ==secondary {
+    @else if $variant == secondary {
         background: transparent;
         color: vars.$color-primary;
         border-color: vars.$color-primary;
 
         &:hover:not(:disabled) {
             background: vars.$color-primary-light;
-            transform: translateY(-2px);
         }
     }
 }

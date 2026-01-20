@@ -17,7 +17,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'danger', 'ghost'],
+      options: ['primary', 'secondary', 'danger', 'ghost', 'flat'],
       description: 'Visual style variant of the button',
     },
     size: {
@@ -70,7 +70,13 @@ export const Ghost: Story = {
     variant: 'ghost',
   },
 };
-
+export const Flat: Story = {
+  args: {
+    children: '中文',
+    variant: 'flat',
+    startIcon: <span>🇨🇳</span>,
+  },
+};
 export const Loading: Story = {
   args: {
     children: 'Processing...',
@@ -133,6 +139,7 @@ export const AllVariants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="danger">Danger</Button>
       <Button variant="ghost">Ghost</Button>
+      <Button variant="flat" startIcon={<span>🇺🇸</span>}>Flat</Button>
     </div>
   ),
 };

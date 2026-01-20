@@ -115,6 +115,38 @@
         }
     }
 
+    &--flat {
+        background: transparent;
+        border: 1px solid vars.$color-gray-300;
+        border-radius: vars.$border-radius-md;
+        padding: vars.$spacing-xs vars.$spacing-sm;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: vars.$color-dark;
+        font-size: vars.$font-size-sm;
+        font-weight: vars.$font-weight-medium;
+        min-height: auto;
+
+        &:hover:not(:disabled) {
+            background: vars.$color-gray-100;
+            border-color: vars.$color-primary;
+        }
+
+        &:focus {
+            outline: 2px solid vars.$color-primary;
+            outline-offset: 2px;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .necktie-button__spinner circle {
+            stroke: vars.$color-primary;
+        }
+    }
+
     // Loading state
     &--loading {
         color: transparent;
@@ -140,7 +172,8 @@
         }
 
         &.necktie-button--secondary,
-        &.necktie-button--ghost {
+        &.necktie-button--ghost,
+        &.necktie-button--flat {
             .necktie-button__spinner circle {
                 stroke: vars.$color-primary;
             }
@@ -214,7 +247,7 @@
 // Mobile optimizations
 @include mixins.mobile-first(tablet) {
     .necktie-button {
-        &:hover:not(:disabled) {
+        &:hover:not(:disabled):not(.necktie-button--flat) {
             transform: translateY(-3px);
             box-shadow: vars.$shadow-lg;
         }

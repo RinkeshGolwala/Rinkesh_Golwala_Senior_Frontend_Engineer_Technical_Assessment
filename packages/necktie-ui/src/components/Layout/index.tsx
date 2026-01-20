@@ -25,6 +25,8 @@ export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   navigation: NavigationConfig;
   /** User avatar click handler */
   onUserMenuClick?: () => void;
+  /** Additional header actions (e.g., language switcher) */
+  headerActions?: React.ReactNode;
 }
 
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
@@ -35,6 +37,7 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
       activeRouteId,
       navigation,
       onUserMenuClick,
+      headerActions,
       className,
       ...props
     },
@@ -105,6 +108,9 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
 
             {/* User Avatar and Mobile Menu Button */}
             <div className="necktie-layout__header-actions">
+              {/* Additional Header Actions */}
+              {headerActions}
+
               {/* User Avatar */}
               <button
                 className="necktie-layout__user-avatar"

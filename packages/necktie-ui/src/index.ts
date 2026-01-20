@@ -12,7 +12,7 @@ export { default as TimeSlot } from './components/TimeSlot';
 export type { ButtonProps } from './components/Button';
 export type { CalendarProps, OpeningHour } from './components/Calendar';
 export type { CardProps } from './components/Card';
-export type { LayoutProps } from './components/Layout';
+export type { LayoutProps, NavigationConfig, RouteConfig } from './components/Layout';
 export type { ModalProps } from './components/Modal';
 export type { SkeletonProps } from './components/Skeleton';
 export type { SwitchProps } from './components/Switch';
