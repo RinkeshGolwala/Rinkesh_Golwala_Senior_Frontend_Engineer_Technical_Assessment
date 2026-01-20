@@ -1,0 +1,133 @@
+// Global styles for the doctor booking application
+// Import necktie-ui base styles
+@use '@doctor-booking/necktie-ui/src/styles/variables' as vars;
+@use '@doctor-booking/necktie-ui/src/styles/mixins';
+@import '@doctor-booking/necktie-ui/dist/index.css';
+
+// Brand colors override
+:root {
+  --primary: #{vars.$color-primary};
+  --primary-light: #{vars.$color-primary-light};
+  --dark-blue: #{vars.$color-dark};
+  --medium-blue: #{vars.$color-medium};
+  --success: #{vars.$color-success};
+  --warning: #{vars.$color-warning};
+  --danger: #{vars.$color-danger};
+  --info: #{vars.$color-info};
+  --white: #{vars.$color-white};
+  --light-gray: #{vars.$color-gray-100};
+  --border-color: #{vars.$color-gray-300};
+}
+
+// Global reset and base styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  @include mixins.multilingual-text();
+  line-height: vars.$line-height-normal;
+  color: vars.$color-dark;
+  background-color: vars.$color-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Resets for common elements
+h1, h2, h3, h4, h5, h6 {
+  font-weight: vars.$font-weight-semibold;
+  line-height: vars.$line-height-tight;
+  margin-bottom: vars.$spacing-sm;
+  color: vars.$color-dark;
+}
+
+h1 { font-size: vars.$font-size-3xl; }
+h2 { font-size: vars.$font-size-2xl; }
+h3 { font-size: vars.$font-size-xl; }
+h4 { font-size: vars.$font-size-lg; }
+h5 { font-size: vars.$font-size-base; }
+h6 { font-size: vars.$font-size-sm; }
+
+p {
+  margin-bottom: vars.$spacing-md;
+  color: vars.$color-medium;
+}
+
+a {
+  color: vars.$color-primary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: vars.$color-primary-hover;
+    text-decoration: underline;
+  }
+}
+
+// Layout utilities
+.container {
+  margin: 0 auto;
+  padding: 0 vars.$spacing-md;
+
+  @media (max-width: vars.$breakpoint-tablet) {
+    padding: 0 vars.$spacing-sm;
+  }
+}
+
+.section {
+  padding: vars.$spacing-xl 0;
+
+  @media (max-width: vars.$breakpoint-tablet) {
+    padding: vars.$spacing-lg 0;
+  }
+}
+
+// Loading states and animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+// Responsive utilities
+.mobile-only {
+  @include mixins.mobile-first(tablet) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @media (max-width: vars.$breakpoint-tablet) {
+    display: none !important;
+  }
+}
+
+// Focus styles for accessibility
+*:focus {
+  @include mixins.focus-outline();
+}

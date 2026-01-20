@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "首页",
+    "bookings": "我的预约"
+  },
+  "hero": {
+    "title": "寻找并预约最好的医生",
+    "description": "发现您所在地区的顶级医疗专家，轻松预约。您的健康，我们的责任。",
+    "browseButton": "浏览医生"
+  },
+  "doctors": {
+    "title": "可用医生",
+    "loading": "正在加载医生列表..."
+  },
+  "language": {
+    "switch": "切换语言",
+    "select": "选择语言",
+    "englishShort": "EN",
+    "chineseShort": "中文"
+  }
+}

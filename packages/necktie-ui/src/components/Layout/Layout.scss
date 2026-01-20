@@ -19,7 +19,6 @@
   }
 
   &__header-container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 vars.$spacing-md;
     display: flex;
@@ -274,7 +273,6 @@
   }
 
   &__content {
-    max-width: 1200px;
     margin: 0 auto;
     padding: vars.$spacing-xl vars.$spacing-md;
     width: 100%;

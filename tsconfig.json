@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "ES6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@doctor-booking/necktie-ui": ["./packages/necktie-ui/src"],
+      "@doctor-booking/necktie-ui/*": ["./packages/necktie-ui/src/*"]
+    }
+  },
+  "include": [],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "./packages/necktie-ui"
+    },
+    {
+      "path": "./apps/doctor-booking"
+    }
+  ]
+}

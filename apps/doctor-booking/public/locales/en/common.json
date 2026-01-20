@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "Home",
+    "bookings": "My Bookings"
+  },
+  "hero": {
+    "title": "Find & Book the Best Doctors",
+    "description": "Discover top-rated healthcare professionals in your area and book appointments with ease. Your health, our priority.",
+    "browseButton": "Browse Doctors"
+  },
+  "doctors": {
+    "title": "Available Doctors",
+    "loading": "Loading doctors list..."
+  },
+  "language": {
+    "switch": "Switch language",
+    "select": "Select language",
+    "englishShort": "EN",
+    "chineseShort": "中文"
+  }
+}

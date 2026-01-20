@@ -15,6 +15,9 @@
     "clean": "turbo run clean",
     "storybook": "turbo run storybook --filter=necktie-ui",
     "build-storybook": "turbo run build-storybook --filter=necktie-ui",
+    "doctor-booking:dev": "turbo run dev --filter=doctor-booking",
+    "doctor-booking:build": "turbo run build --filter=doctor-booking",
+    "doctor-booking:start": "turbo run start --filter=doctor-booking",
     "prepare": "husky install"
   },
   "keywords": [
