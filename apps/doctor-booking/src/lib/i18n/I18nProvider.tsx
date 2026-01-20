@@ -1,34 +1,34 @@
-'use client'
+'use client';
 
-import type { i18n as I18nType } from 'i18next'
-import { ReactNode, useEffect, useState } from 'react'
-import { I18nextProvider } from 'react-i18next'
-import { initI18next } from './config'
-import { LanguageProvider } from './LanguageContext'
+import type { i18n as I18nType } from 'i18next';
+import { ReactNode, useEffect, useState } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { initI18next } from './config';
+import { LanguageProvider } from './LanguageContext';
 
 interface I18nProviderProps {
-  children: ReactNode
-  locale?: string
+  children: ReactNode;
+  locale?: string;
 }
 
 export function I18nProvider({ children, locale = 'en' }: I18nProviderProps) {
-  const [i18n, setI18n] = useState<I18nType | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [i18n, setI18n] = useState<I18nType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const initialize = async () => {
       try {
-        const i18nInstance = await initI18next(locale)
-        setI18n(i18nInstance)
+        const i18nInstance = await initI18next(locale);
+        setI18n(i18nInstance);
       } catch (error) {
-        console.error('Failed to initialize i18n:', error)
+        console.error('Failed to initialize i18n:', error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    initialize()
-  }, [locale])
+    initialize();
+  }, [locale]);
 
   // TODO: Add a skeleton ui
   if (isLoading) {
@@ -36,12 +36,12 @@ export function I18nProvider({ children, locale = 'en' }: I18nProviderProps) {
       <div className="loading-container">
         <div className="loading-spinner">Loading...</div>
       </div>
-    )
+    );
   }
 
   // TODO: Add an error UI
   if (!i18n) {
-    return <div>Error loading translations</div>
+    return <div>Error loading translations</div>;
   }
 
   return (
@@ -50,5 +50,5 @@ export function I18nProvider({ children, locale = 'en' }: I18nProviderProps) {
         {children}
       </LanguageProvider>
     </I18nextProvider>
-  )
+  );
 }

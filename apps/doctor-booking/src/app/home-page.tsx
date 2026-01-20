@@ -1,6 +1,10 @@
 'use client';
 
-import { Layout, type RouteConfig, type NavigationConfig } from '@doctor-booking/necktie-ui';
+import {
+  Layout,
+  type RouteConfig,
+  type NavigationConfig,
+} from '@doctor-booking/necktie-ui';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
@@ -34,16 +38,17 @@ export default function HomePageContent() {
         // Handle user menu click - will be implemented later
         alert('User menu clicked');
       }}
-      headerActions={
-        <LanguageSwitcher />
-      }
+      headerActions={<LanguageSwitcher />}
     >
       <div className="container">
         <section className="hero-section section">
           <div className="hero-content">
             <h1>{t('hero.title', 'Find & Book the Best Doctors')}</h1>
             <p>
-              {t('hero.description', 'Discover top-rated healthcare professionals in your area and book appointments with ease. Your health, our priority.')}
+              {t(
+                'hero.description',
+                'Discover top-rated healthcare professionals in your area and book appointments with ease. Your health, our priority.'
+              )}
             </p>
             <div className="hero-actions">
               <a href="#doctors" className="btn btn-primary">

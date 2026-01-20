@@ -4,6 +4,6 @@ const nextConfig = {
     includePaths: ['./src/styles'],
   },
   transpilePackages: ['@doctor-booking/necktie-ui'],
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

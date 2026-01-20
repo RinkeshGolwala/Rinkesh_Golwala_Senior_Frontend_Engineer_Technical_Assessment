@@ -139,7 +139,9 @@ export const AllVariants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="danger">Danger</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="flat" startIcon={<span>🇺🇸</span>}>Flat</Button>
+      <Button variant="flat" startIcon={<span>🇺🇸</span>}>
+        Flat
+      </Button>
     </div>
   ),
 };

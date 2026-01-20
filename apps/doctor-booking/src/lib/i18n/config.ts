@@ -1,7 +1,7 @@
-import i18n from 'i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
-import Backend from 'i18next-http-backend'
-import { initReactI18next } from 'react-i18next'
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
 
 const initI18next = async (locale: string = 'en') => {
   await i18n
@@ -39,10 +39,10 @@ const initI18next = async (locale: string = 'en') => {
 
       // Preload languages
       preload: ['en', 'zh'],
-    })
+    });
 
-  return i18n
-}
+  return i18n;
+};
 
-export { initI18next }
-export default i18n
+export { initI18next };
+export default i18n;
