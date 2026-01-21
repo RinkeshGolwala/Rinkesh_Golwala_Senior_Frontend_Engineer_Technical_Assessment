@@ -1,8 +1,8 @@
 'use client';
 
-import { useLanguage, useLanguageOptions } from '../lib/i18n/LanguageContext';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { useTranslation } from 'react-i18next';
-import { Button, Skeleton } from '@doctor-booking/necktie-ui';
+import { Button } from '@doctor-booking/necktie-ui';
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -13,7 +13,6 @@ export default function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const { language, setLanguage, isChanging } = useLanguage();
   const { t } = useTranslation('common');
-  const languageOptions = useLanguageOptions();
 
   return (
     <Button

@@ -6,11 +6,29 @@
   "hero": {
     "title": "Find & Book the Best Doctors",
     "description": "Discover top-rated healthcare professionals in your area and book appointments with ease. Your health, our priority.",
-    "browseButton": "Browse Doctors"
+    "browseButton": "Browse Doctors",
+    "stats": {
+      "doctors": "Available Doctors"
+    }
   },
   "doctors": {
     "title": "Available Doctors",
-    "loading": "Loading doctors list..."
+    "subtitle": "Choose from our network of qualified healthcare professionals",
+    "loading": "Loading doctors list...",
+    "empty": {
+      "title": "No doctors available",
+      "description": "We couldn't find any doctors at the moment. Please try again later."
+    },
+    "error": {
+      "title": "Unable to load doctors",
+      "retry": "Try Again"
+    },
+    "card": {
+      "viewDetails": "View Details",
+      "consult": "Consult",
+      "openToday": "Open today",
+      "closedToday": "Closed today"
+    }
   },
   "language": {
     "switch": "Switch language",

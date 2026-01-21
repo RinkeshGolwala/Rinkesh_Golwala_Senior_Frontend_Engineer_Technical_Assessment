@@ -1,0 +1,57 @@
+.errorState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.icon {
+  color: var(--color-danger, #dc3545);
+  margin-bottom: 1rem;
+}
+
+.content h3 {
+  color: var(--color-text-primary, rgb(42, 46, 66));
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.content p {
+  color: var(--color-text-secondary, rgb(104, 113, 136));
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}
+
+.retryButton {
+  background-color: var(--color-primary, #ff0068);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  min-height: 44px;
+  font-size: 0.9375rem;
+
+  &:hover {
+    background-color: #e60060;
+  }
+
+  &:active {
+    background-color: #cc0055;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-primary, #ff0068);
+    outline-offset: 2px;
+  }
+}

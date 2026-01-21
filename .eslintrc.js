@@ -10,6 +10,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: [
+      './tsconfig.json',
+      './packages/*/tsconfig.json',
+      './apps/*/tsconfig.json',
+    ],
+    tsconfigRootDir: __dirname,
     ecmaFeatures: {
       jsx: true,
     },
@@ -42,6 +48,7 @@ module.exports = {
     'dist/**/*',
     'node_modules/**/*',
     '*.config.js',
+    '.eslintrc.js',
     'coverage/**/*',
     'storybook-static/**/*',
     '.next/**/*',

@@ -8,6 +8,9 @@ export { default as Skeleton } from './components/Skeleton';
 export { default as Switch } from './components/Switch';
 export { default as TimeSlot } from './components/TimeSlot';
 
+// Export skeleton sub-components
+export { SkeletonDoctorCard, SkeletonBookingCard } from './components/Skeleton';
+
 // Export types (will be added when components are created)
 export type { ButtonProps } from './components/Button';
 export type { CalendarProps, OpeningHour } from './components/Calendar';
@@ -18,6 +21,10 @@ export type {
   RouteConfig,
 } from './components/Layout';
 export type { ModalProps } from './components/Modal';
-export type { SkeletonProps } from './components/Skeleton';
+export type {
+  SkeletonProps,
+  SkeletonDoctorCardProps,
+  SkeletonBookingCardProps,
+} from './components/Skeleton';
 export type { SwitchProps } from './components/Switch';
 export type { TimeSlotProps } from './components/TimeSlot';

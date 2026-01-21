@@ -22,7 +22,7 @@
     &:disabled {
         cursor: not-allowed;
         opacity: 0.6;
-        transform: none !important;
+        transform: none;
     }
 
     // Size variations
@@ -53,7 +53,6 @@
         &:hover:not(:disabled) {
             background: vars.$color-primary-hover;
             border-color: vars.$color-primary-hover;
-            transform: translateY(-2px);
             box-shadow: vars.$shadow-md;
         }
 
@@ -70,7 +69,6 @@
 
         &:hover:not(:disabled) {
             background: vars.$color-primary-light;
-            transform: translateY(-2px);
             box-shadow: vars.$shadow-sm;
         }
 
@@ -87,8 +85,6 @@
 
         &:hover:not(:disabled) {
             background: vars.$color-danger-hover;
-            border-color: vars.$color-danger-hover;
-            transform: translateY(-2px);
             box-shadow: vars.$shadow-md;
         }
 
@@ -106,7 +102,6 @@
         &:hover:not(:disabled) {
             background: vars.$color-gray-100;
             color: vars.$color-dark;
-            transform: translateY(-1px);
         }
 
         &:active:not(:disabled) {
@@ -155,9 +150,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 16px;
-            height: 16px;
+            width: 24px;
+            height: 24px;
 
             svg {
                 width: 100%;
@@ -244,12 +238,31 @@
     }
 }
 
-// Mobile optimizations
+// tablet optimizations
 @include mixins.mobile-first(tablet) {
     .necktie-button {
-        &:hover:not(:disabled):not(.necktie-button--flat) {
-            transform: translateY(-3px);
+        &:hover:not(:disabled) {
             box-shadow: vars.$shadow-lg;
+            transform: none;
+        }
+    }
+}
+
+// desktop optimizations
+@include mixins.mobile-first(desktop) {
+    .necktie-button {
+        &--primary,
+        &--secondary,
+        &--danger {
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+            }
+        }
+
+        &--ghost {
+            &:hover:not(:disabled) {
+                transform: translateY(-1px);
+            }
         }
     }
 }

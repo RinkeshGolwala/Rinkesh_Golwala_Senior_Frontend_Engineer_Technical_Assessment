@@ -6,11 +6,29 @@
   "hero": {
     "title": "寻找并预约最好的医生",
     "description": "发现您所在地区的顶级医疗专家，轻松预约。您的健康，我们的责任。",
-    "browseButton": "浏览医生"
+    "browseButton": "浏览医生",
+    "stats": {
+      "doctors": "可预约医生"
+    }
   },
   "doctors": {
     "title": "可用医生",
-    "loading": "正在加载医生列表..."
+    "subtitle": "从我们的专业医疗网络中选择",
+    "loading": "正在加载医生列表...",
+    "empty": {
+      "title": "暂无可用医生",
+      "description": "目前找不到任何医生，请稍后再试。"
+    },
+    "error": {
+      "title": "无法加载医生信息",
+      "retry": "重试"
+    },
+    "card": {
+      "viewDetails": "查看详情",
+      "consult": "咨询",
+      "openToday": "今日营业",
+      "closedToday": "今日休诊"
+    }
   },
   "language": {
     "switch": "切换语言",

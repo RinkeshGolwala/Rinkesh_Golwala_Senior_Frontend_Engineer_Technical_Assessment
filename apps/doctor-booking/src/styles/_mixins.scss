@@ -1,0 +1,37 @@
+@import './variables';
+
+// Mobile-first responsive mixins
+@mixin mobile-first($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  }
+  @else if $breakpoint == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+// Touch-friendly button mixin
+@mixin touch-button($padding: $spacing-md) {
+  min-height: $touch-target-min;
+  min-width: $touch-target-min;
+  padding: $padding;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
