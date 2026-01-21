@@ -1,7 +1,11 @@
 module.exports = {
   root: true,
-  extends: ['eslint:recommended', 'prettier'],
-  plugins: [],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
+  plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -21,11 +25,18 @@ module.exports = {
     },
   },
   rules: {
-    // General rules
-    'no-console': 'warn',
+    'no-console': 'off', // TODO: change to error once logger is set up
     'no-debugger': 'error',
     'prefer-const': 'error',
-    'no-unused-vars': 'off', // Disabled for TypeScript files
+    'no-unused-vars': 'off', // Disable base rule to avoid conflicts
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
   },
   ignorePatterns: [
     'dist/**/*',
