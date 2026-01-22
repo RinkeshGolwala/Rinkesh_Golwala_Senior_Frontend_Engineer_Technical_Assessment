@@ -30,6 +30,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<{
   openingHours: OpeningHour[];
+  selectedDate?: Date;
+  onDateSelect?: (date: string) => void;
 }>;
 
 const mockOpeningHours: OpeningHour[] = [
@@ -80,6 +82,8 @@ const mockOpeningHours: OpeningHour[] = [
 export const Default: Story = {
   args: {
     openingHours: mockOpeningHours,
+    selectedDate: new Date(),
+    onDateSelect: (_date: string) => {},
   },
 };
 
