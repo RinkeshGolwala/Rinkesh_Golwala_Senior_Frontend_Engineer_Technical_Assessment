@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
 
 .modal {
   .modalContent {
@@ -13,7 +13,7 @@
 }
 
 .content {
-  padding-bottom: $spacing-xl;;
+  padding-bottom: $spacing-xl;
 }
 
 .appointmentDetails {

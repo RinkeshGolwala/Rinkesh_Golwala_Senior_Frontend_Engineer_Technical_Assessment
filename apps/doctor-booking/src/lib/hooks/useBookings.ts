@@ -1,16 +1,17 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
 import {
-  getBookings,
-  getBookingById,
-  createBooking,
   cancelBooking,
-} from '../api/bookings';
+  createBooking,
+  getBookingById,
+  getBookings,
+} from '@/lib/api/bookings';
 import {
+  ApiResponse,
   Booking,
   BookingsListResponse,
   CreateBookingPayload,
-  ApiResponse,
-} from '../types';
+} from '@/lib/types';
 
 interface UseBookingsState {
   data: BookingsListResponse | null;

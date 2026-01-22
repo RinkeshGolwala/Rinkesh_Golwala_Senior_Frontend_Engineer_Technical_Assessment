@@ -1,5 +1,6 @@
 // Next.js API route: /api/doctors/[id]
 import { NextRequest, NextResponse } from 'next/server';
+
 import { makeExternalApiRequest } from '@/api/api-config';
 import { Doctor } from '@/lib/types';
 

@@ -1,5 +1,6 @@
 // Next.js API route: /api/bookings/[id]
 import { NextRequest, NextResponse } from 'next/server';
+
 import { makeExternalApiRequest } from '@/api/api-config';
 import { Booking, UpdateBookingPayload } from '@/lib/types';
 

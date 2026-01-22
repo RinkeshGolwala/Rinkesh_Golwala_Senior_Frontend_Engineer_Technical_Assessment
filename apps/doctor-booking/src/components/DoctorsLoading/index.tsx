@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
 import { SkeletonDoctorCard } from '@doctor-booking/necktie-ui';
+import React from 'react';
+
 import styles from './DoctorsLoading.module.scss';
 
 interface DoctorsLoadingProps {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+
 import styles from './InvalidBookingContent.module.scss';
 
 export default function InvalidBookingContent() {

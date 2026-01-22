@@ -1,9 +1,10 @@
 // Next.js API route: /api/bookings
 import { NextRequest, NextResponse } from 'next/server';
+
 import { makeExternalApiRequest } from '@/api/api-config';
 import {
-  BookingsListResponse,
   Booking,
+  BookingsListResponse,
   CreateBookingPayload,
 } from '@/lib/types';
 

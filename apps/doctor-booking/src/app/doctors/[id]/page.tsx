@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+
+import { makeExternalApiRequest } from '@/api/api-config';
+import DoctorDetailsLoading from '@/components/DoctorDetailsLoading';
 import DoctorDetailsPageContent from '@/components/DoctorDetailsPageContent';
 import { Doctor } from '@/lib';
-import { makeExternalApiRequest } from '@/api/api-config';
-import { Suspense } from 'react';
-import DoctorDetailsLoading from '@/components/DoctorDetailsLoading';
 
 type Props = {
   params: { id: string };

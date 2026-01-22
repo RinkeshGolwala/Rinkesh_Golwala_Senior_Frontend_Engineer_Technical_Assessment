@@ -1,15 +1,16 @@
 'use client';
 
+import { Button, Calendar, TimeSlotList } from '@doctor-booking/necktie-ui';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/navigation';
 
-import { Button, Calendar, TimeSlotList } from '@doctor-booking/necktie-ui';
-import { Doctor } from '@/lib/types';
-import DoctorsLayout from '@/components/DoctorsLayout';
 import BookingConfirmationModal from '@/components/BookingConfirmationModal';
+import DoctorsLayout from '@/components/DoctorsLayout';
+import { Doctor } from '@/lib/types';
 import { getOpeningHoursStatus } from '@/lib/utils/doctorUtils';
 import { getAdjustedOpeningHourForDate } from '@/lib/utils/timeSlotUtils';
+
 import styles from './DoctorDetailsPageContent.module.scss';
 
 interface DoctorDetailsPageContentProps {

@@ -1,9 +1,11 @@
 'use client';
 
-import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import { Button, Card } from '@doctor-booking/necktie-ui';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+
 import DoctorsLayout from '@/components/DoctorsLayout';
+
 import styles from './DoctorNotFoundContent.module.scss';
 
 export default function DoctorNotFoundContent() {

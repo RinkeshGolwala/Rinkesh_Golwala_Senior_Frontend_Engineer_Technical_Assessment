@@ -1,8 +1,9 @@
 'use client';
 
-import { useLanguage } from '@/lib/i18n/LanguageContext';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@doctor-booking/necktie-ui';
+import { useTranslation } from 'react-i18next';
+
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 interface LanguageSwitcherProps {
   className?: string;

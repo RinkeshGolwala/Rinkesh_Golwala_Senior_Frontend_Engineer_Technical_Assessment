@@ -1,31 +1,30 @@
-export { getDoctors, getDoctorById } from './api/doctors';
 export {
-  getBookings,
+  cancelBooking,
   createBooking,
   getBookingById,
-  cancelBooking,
+  getBookings,
 } from './api/bookings';
-
+export { getDoctorById, getDoctors } from './api/doctors';
 export type {
-  Doctor,
-  DoctorsListResponse,
-  Booking,
-  CreateBookingPayload,
-  UpdateBookingPayload,
-  BookingsListResponse,
   ApiError,
   ApiResponse,
+  Booking,
+  BookingsListResponse,
+  CreateBookingPayload,
+  Doctor,
+  DoctorsListResponse,
+  UpdateBookingPayload,
 } from './types';
 
 // Utility functions
-export { getOpeningHoursStatus, getCurrentDay } from './utils/doctorUtils';
+export { getCurrentDay, getOpeningHoursStatus } from './utils/doctorUtils';
 
 // React hooks
 export {
-  useBookings,
   useBooking,
-  useCreateBooking,
+  useBookings,
   useCancelBooking,
+  useCreateBooking,
 } from './hooks/useBookings';
 
 // Constants

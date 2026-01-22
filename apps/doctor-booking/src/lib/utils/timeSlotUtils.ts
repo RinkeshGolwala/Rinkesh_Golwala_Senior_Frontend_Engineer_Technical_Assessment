@@ -1,5 +1,5 @@
-import { Doctor, OpeningHour } from '@/lib/types';
 import { DAY_NAMES } from '@/lib';
+import { Doctor, OpeningHour } from '@/lib/types';
 
 /**
  * Get the opening hour for a specific date

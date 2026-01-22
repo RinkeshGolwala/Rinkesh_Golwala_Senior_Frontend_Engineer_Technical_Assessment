@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
 
 .container {
   min-height: 100vh;
@@ -48,8 +48,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 // Error State
@@ -181,7 +185,8 @@
 }
 
 @keyframes checkmarkPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -285,7 +290,7 @@
     .bookingId {
       font-size: 0.875rem;
       color: $color-text-secondary;
-      font-family: 'Monaco', 'Menlo', monospace;
+      font-family: "Monaco", "Menlo", monospace;
       background: $color-primary-light;
       padding: $spacing-xs $spacing-sm;
       border-radius: $border-radius-sm;
@@ -326,7 +331,7 @@
           gap: $spacing-xs;
 
           &::before {
-            content: '✓';
+            content: "✓";
             font-size: 0.75rem;
           }
         }
@@ -411,8 +416,6 @@
     text-align: center;
   }
 }
-
-
 
 // Dark mode support (if implemented later)
 @media (prefers-color-scheme: dark) {

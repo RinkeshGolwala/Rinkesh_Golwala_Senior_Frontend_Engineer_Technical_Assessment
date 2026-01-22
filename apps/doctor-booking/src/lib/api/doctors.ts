@@ -1,4 +1,5 @@
-import { Doctor, DoctorsListResponse, ApiResponse } from '../types';
+import { ApiResponse, Doctor, DoctorsListResponse } from '@/lib/types';
+
 import { internalApiRequest } from './utils';
 
 /**

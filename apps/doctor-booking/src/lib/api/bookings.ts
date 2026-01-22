@@ -1,11 +1,12 @@
 import {
+  ApiResponse,
   Booking,
   BookingsListResponse,
+  BookingStatus,
   CreateBookingPayload,
   UpdateBookingPayload,
-  ApiResponse,
-  BookingStatus,
-} from '../types';
+} from '@/lib/types';
+
 import { internalApiRequest } from './utils';
 
 /**

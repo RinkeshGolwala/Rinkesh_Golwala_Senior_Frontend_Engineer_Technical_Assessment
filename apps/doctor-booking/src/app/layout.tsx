@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
-import { I18nProvider } from '../lib/i18n/I18nProvider';
 import './globals.scss';
+
+import { ReactNode } from 'react';
+
+import { I18nProvider } from '@/lib/i18n/I18nProvider';
 
 export const metadata = {
   title: 'Doctor Booking App',

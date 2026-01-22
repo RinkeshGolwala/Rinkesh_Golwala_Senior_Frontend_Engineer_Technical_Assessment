@@ -1,7 +1,9 @@
 'use client';
 
 import { Card, Skeleton } from '@doctor-booking/necktie-ui';
+
 import DoctorsLayout from '@/components/DoctorsLayout';
+
 import styles from './DoctorDetailsLoading.module.scss';
 
 export default function DoctorDetailsLoading() {

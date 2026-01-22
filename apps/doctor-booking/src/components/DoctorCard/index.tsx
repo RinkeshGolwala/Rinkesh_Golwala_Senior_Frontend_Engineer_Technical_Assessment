@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import { Button, Card } from '@doctor-booking/necktie-ui';
 import Link from 'next/link';
-import { Card, Button } from '@doctor-booking/necktie-ui';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Doctor } from '../../lib/types';
+
+import { Doctor } from '@/lib/types';
+
 import styles from './DoctorCard.module.scss';
 
 export interface DoctorCardProps {

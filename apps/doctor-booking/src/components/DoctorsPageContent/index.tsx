@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import DoctorsLayout from '@/components/DoctorsLayout';
 import DoctorsList from '@/components/DoctorsList';
-import { useTranslation } from 'react-i18next';
 import { Doctor } from '@/lib/types';
-import { ErrorState, EmptyState } from './sub-components';
+
 import styles from './DoctorsPageContent.module.scss';
+import { EmptyState, ErrorState } from './sub-components';
 
 interface DoctorsPageContentProps {
   initialDoctors: Doctor[];

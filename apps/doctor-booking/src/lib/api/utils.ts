@@ -1,6 +1,6 @@
 // Utility functions for API
 
-import { ApiResponse } from '../types';
+import { ApiResponse } from '@/lib/types';
 
 /**
  * Base function to make internal API requests

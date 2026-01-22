@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+
 import BookingSuccessPageContent from '@/components/BookingSuccessPageContent';
 import InvalidBookingContent from '@/components/InvalidBookingContent';
 

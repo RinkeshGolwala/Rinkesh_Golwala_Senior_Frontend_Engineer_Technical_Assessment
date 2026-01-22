@@ -1,10 +1,10 @@
-import { OpeningHour } from '@/lib/types';
 import {
-  DayOfWeek,
-  DAY_NAMES,
   DAY_FULL_NAMES,
+  DAY_NAMES,
+  DayOfWeek,
   getCurrentDay as getCurrentDayEnum,
 } from '@/lib/constants/days';
+import { OpeningHour } from '@/lib/types';
 
 /**
  * Get the current day of the week in the format used by the API

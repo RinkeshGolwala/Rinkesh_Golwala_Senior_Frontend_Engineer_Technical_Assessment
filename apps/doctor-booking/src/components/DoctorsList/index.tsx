@@ -1,9 +1,11 @@
 'use client';
 
-import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Doctor } from '../../lib/types';
-import DoctorCard from '../DoctorCard';
+import React from 'react';
+
+import DoctorCard from '@/components/DoctorCard';
+import { Doctor } from '@/lib/types';
+
 import styles from './DoctorsList.module.scss';
 
 interface DoctorsListProps {

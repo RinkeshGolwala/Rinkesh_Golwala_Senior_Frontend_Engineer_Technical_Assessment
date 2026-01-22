@@ -1,11 +1,13 @@
 'use client';
 
+import { Card } from '@doctor-booking/necktie-ui';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card } from '@doctor-booking/necktie-ui';
+
 import DoctorsLayout from '@/components/DoctorsLayout';
-import { Booking } from '@/lib/types';
 import { getBookingById } from '@/lib/api/bookings';
+import { Booking } from '@/lib/types';
+
 import styles from './BookingSuccessPageContent.module.scss';
 
 interface BookingSuccessPageContentProps {

@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button, Modal } from '@doctor-booking/necktie-ui';
-import { Doctor, CreateBookingPayload, BookingStatus } from '@/lib/types';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { useCreateBooking } from '@/lib/hooks/useBookings';
+import { BookingStatus, CreateBookingPayload, Doctor } from '@/lib/types';
+
 import styles from './BookingConfirmationModal.module.scss';
 
 export interface BookingConfirmationModalProps {

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
 import styles from './EmptyState.module.scss';
 
 export default function EmptyState() {

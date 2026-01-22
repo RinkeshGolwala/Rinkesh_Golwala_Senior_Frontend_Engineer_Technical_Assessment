@@ -3,10 +3,12 @@
 import type { i18n as I18nType } from 'i18next';
 import { ReactNode, useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
+
+import DoctorsLoading from '@/components/DoctorsLoading';
+import { ErrorState } from '@/components/DoctorsPageContent/sub-components';
+
 import { initI18next } from './config';
 import { LanguageProvider } from './LanguageContext';
-import DoctorsLoading from '@/components/DoctorsLoading';
-import { ErrorState } from '../../components/DoctorsPageContent/sub-components';
 
 interface I18nProviderProps {
   children: ReactNode;

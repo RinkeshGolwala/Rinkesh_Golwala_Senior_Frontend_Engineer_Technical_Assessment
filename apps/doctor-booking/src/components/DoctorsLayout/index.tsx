@@ -1,14 +1,15 @@
 'use client';
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
 import {
   Layout,
-  type RouteConfig,
   type NavigationConfig,
+  type RouteConfig,
 } from '@doctor-booking/necktie-ui';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../LanguageSwitcher';
+
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 interface DoctorsLayoutProps {
   children: React.ReactNode;
