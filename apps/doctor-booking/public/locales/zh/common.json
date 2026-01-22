@@ -28,6 +28,44 @@
       "consult": "咨询",
       "openToday": "今日营业",
       "closedToday": "今日休诊"
+    },
+    "details": {
+      "backToList": "返回医生列表",
+      "about": "关于医生",
+      "address": "地址",
+      "availableTimes": "可用时间",
+      "noAvailableSlots": "该日期暂无可用时间段",
+      "openingHours": "开诊时间",
+      "bookAppointment": "预约挂号",
+      "consultNow": "立即咨询",
+      "selectDate": "选择日期",
+      "selectTime": "选择时间",
+      "bookingSummary": "预约摘要",
+      "doctor": "医生",
+      "date": "日期",
+      "time": "时间",
+      "booking": "预约中...",
+      "confirmBooking": "确认预约",
+      "loading": "载入医生详情中...",
+      "openNow": "营业中",
+      "closedNow": "已关闭",
+      "closedToday": "今日关闭",
+      "nextOpen": "下次营业",
+      "error": {
+        "title": "找不到医生",
+        "description": "您查找的医生不存在或已被移除。",
+        "goBack": "返回医生列表"
+      },
+      "schedule": {
+        "mon": "星期一",
+        "tue": "星期二",
+        "wed": "星期三",
+        "thu": "星期四",
+        "fri": "星期五",
+        "sat": "星期六",
+        "sun": "星期日",
+        "closed": "休诊"
+      }
     }
   },
   "language": {

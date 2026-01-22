@@ -1,8 +1,8 @@
 // Global styles for the doctor booking application
 // Import necktie-ui base styles
-@use '@doctor-booking/necktie-ui/src/styles/variables' as vars;
-@use '@doctor-booking/necktie-ui/src/styles/mixins';
-@import '@doctor-booking/necktie-ui/dist/index.css';
+@use "@doctor-booking/necktie-ui/src/styles/variables" as vars;
+@use "@doctor-booking/necktie-ui/src/styles/mixins";
+@import "@doctor-booking/necktie-ui/dist/index.css";
 
 // Brand colors override
 :root {
@@ -41,19 +41,36 @@ body {
 }
 
 // Resets for common elements
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: vars.$font-weight-semibold;
   line-height: vars.$line-height-tight;
   margin-bottom: vars.$spacing-sm;
   color: vars.$color-dark;
 }
 
-h1 { font-size: vars.$font-size-3xl; }
-h2 { font-size: vars.$font-size-2xl; }
-h3 { font-size: vars.$font-size-xl; }
-h4 { font-size: vars.$font-size-lg; }
-h5 { font-size: vars.$font-size-base; }
-h6 { font-size: vars.$font-size-sm; }
+h1 {
+  font-size: vars.$font-size-3xl;
+}
+h2 {
+  font-size: vars.$font-size-2xl;
+}
+h3 {
+  font-size: vars.$font-size-xl;
+}
+h4 {
+  font-size: vars.$font-size-lg;
+}
+h5 {
+  font-size: vars.$font-size-base;
+}
+h6 {
+  font-size: vars.$font-size-sm;
+}
 
 p {
   margin-bottom: vars.$spacing-md;
@@ -91,8 +108,12 @@ a {
 
 // Loading states and animations
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {

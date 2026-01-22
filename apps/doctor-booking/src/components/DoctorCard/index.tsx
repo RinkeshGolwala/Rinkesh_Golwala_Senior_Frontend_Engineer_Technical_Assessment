@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Card, Button } from '@doctor-booking/necktie-ui';
 import { useTranslation } from 'react-i18next';
 import { Doctor } from '../../lib/types';
@@ -16,7 +17,6 @@ export interface DoctorCardProps {
 export default function DoctorCard({
   doctor,
   onBookAppointment,
-  onViewDetails,
   className = '',
 }: DoctorCardProps) {
   const { t } = useTranslation('common');
@@ -58,14 +58,15 @@ export default function DoctorCard({
         </div>
 
         <div className={styles.actions}>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => onViewDetails?.(doctor.id)}
-            className={styles.detailsButton}
-          >
-            {t('doctors.card.viewDetails', 'View Details')}
-          </Button>
+          <Link href={`/doctors/${doctor.id}`} className={styles.detailsLink}>
+            <Button
+              variant="secondary"
+              size="sm"
+              className={styles.detailsButton}
+            >
+              {t('doctors.card.viewDetails', 'View Details')}
+            </Button>
+          </Link>
           <Button
             variant="primary"
             size="sm"

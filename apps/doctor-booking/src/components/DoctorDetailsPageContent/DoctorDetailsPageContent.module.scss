@@ -1,0 +1,344 @@
+@import "@/styles/variables.scss";
+@import "@/styles/_mixins.scss";
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(255, 0, 104, 0.02) 0%, rgba(255, 240, 246, 0.3) 100%);
+}
+
+/* Doctor Header Section - Full width with gradient */
+.doctorHeader {
+  background: linear-gradient(135deg, #fa7bad 0%, #f7e8ee 100%);
+  color: white;
+  padding: 2rem 1rem 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  @include mobile-first(tablet) {
+    padding: 3rem 2rem 4rem;
+    margin-bottom: 3rem;
+
+    .doctorInfo,
+    .statusSection {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  @include mobile-first(desktop) {
+    padding: 4rem 3rem 5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.doctorInfo {
+  margin-bottom: 1.5rem;
+
+  @include mobile-first(tablet) {
+    margin-bottom: 2rem;
+  }
+}
+
+.doctorName {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @include mobile-first(tablet) {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @include mobile-first(desktop) {
+    font-size: 2.5rem;
+  }
+}
+
+.address {
+  opacity: 0.95;
+  line-height: 1.5;
+
+  p {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include mobile-first(tablet) {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.district {
+  font-weight: 600;
+  font-size: 1.1rem;
+
+  @include mobile-first(tablet) {
+    font-size: 1.2rem;
+  }
+}
+
+.statusSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  align-self: flex-start;
+
+  @include mobile-first(tablet) {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  &.statusOpen {
+    background: var(--success, #28a745);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.statusClosed {
+    background: var(--danger, #dc3545);
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.nextOpenInfo {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin: 0;
+
+  @include mobile-first(tablet) {
+    font-size: 1rem;
+  }
+}
+
+/* Content Sections */
+.section {
+  padding: 0 1rem 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+
+  @include mobile-first(tablet) {
+    padding: 0 2rem 3rem;
+  }
+
+  @include mobile-first(desktop) {
+    padding: 0 3rem 4rem;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(42, 46, 66, 0.9);
+  margin: 0 0 1.5rem 0;
+  position: relative;
+
+  @include mobile-first(tablet) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  @include mobile-first(desktop) {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $text-secondary;
+  margin: 0;
+
+  @include mobile-first(tablet) {
+    font-size: 1.1rem;
+  }
+}
+
+/* Booking Section */
+.bookingSection {
+  padding: 0 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+
+  @include mobile-first(tablet) {
+    padding: 0 2rem;
+  }
+
+  @include mobile-first(desktop) {
+    padding: 0 3rem;
+  }
+}
+
+.bookingGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+
+  @include mobile-first(tablet) {
+    gap: 3rem;
+    margin: 3rem 0;
+  }
+
+  @include mobile-first(desktop) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.calendarContainer,
+.timeSlotsContainer {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 0, 104, 0.08);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-primary, rgba(255, 0, 104, 0.6));
+  }
+
+  @include mobile-first(tablet) {
+    padding: 2rem;
+    border-radius: 1.25rem;
+  }
+
+  .necktie-calendar {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(42, 46, 66, 0.9);
+  margin: 0 0 1.5rem 0;
+
+  @include mobile-first(tablet) {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Booking Summary */
+.bookingSummary {
+  background: linear-gradient(135deg, rgba(255, 0, 104, 0.03) 0%, rgba(255, 240, 246, 0.4) 100%);
+  border: 2px solid rgba(255, 0, 104, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include mobile-first(tablet) {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    gap: 2rem;
+  }
+
+  @include mobile-first(desktop) {
+    margin-top: 3rem;
+  }
+}
+
+.summaryContent {
+  flex: 1;
+}
+
+.summaryTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(42, 46, 66, 0.9);
+  margin: 0 0 1rem 0;
+
+  @include mobile-first(tablet) {
+    font-size: 1.4rem;
+  }
+}
+
+.summaryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: $text-secondary;
+    line-height: 1.5;
+
+    strong {
+      color: $text-primary;
+      font-weight: 600;
+    }
+  }
+
+  @include mobile-first(tablet) {
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.bookButton {
+  min-height: 3.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(255, 0, 104, 0.3);
+  transition: all 0.2s ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 0, 104, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  @include mobile-first(tablet) {
+    min-width: 200px;
+    align-self: flex-start;
+  }
+
+  @include mobile-first(desktop) {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+}

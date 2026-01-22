@@ -17,7 +17,10 @@ export type {
   ApiResponse,
 } from './types';
 
-// React hooks (for use in components)
+// Utility functions
+export { getOpeningHoursStatus, getCurrentDay } from './utils/doctorUtils';
+
+// React hooks
 export { useDoctors, useDoctor } from './hooks/useDoctors';
 export {
   useBookings,
@@ -25,3 +28,6 @@ export {
   useCreateBooking,
   useCancelBooking,
 } from './hooks/useBookings';
+
+// Constants
+export * from './constants/days';

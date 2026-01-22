@@ -11,6 +11,11 @@
       "doctors": "Available Doctors"
     }
   },
+  "common": {
+    "loading": "Loading...",
+    "updating": "Updating...",
+    "errorMessage": "Something went wrong. Please try again."
+  },
   "doctors": {
     "title": "Available Doctors",
     "subtitle": "Choose from our network of qualified healthcare professionals",
@@ -28,6 +33,44 @@
       "consult": "Consult",
       "openToday": "Open today",
       "closedToday": "Closed today"
+    },
+    "details": {
+      "backToList": "Back to Doctors",
+      "about": "About",
+      "address": "Address",
+      "availableTimes": "Available Times",
+      "noAvailableSlots": "No available time slots for this date",
+      "openingHours": "Opening Hours",
+      "bookAppointment": "Book Appointment",
+      "consultNow": "Consult Now",
+      "selectDate": "Select Date",
+      "selectTime": "Select Time",
+      "bookingSummary": "Booking Summary",
+      "doctor": "Doctor",
+      "date": "Date",
+      "time": "Time",
+      "booking": "Booking...",
+      "confirmBooking": "Confirm Booking",
+      "loading": "Loading doctor details...",
+      "openNow": "Open now",
+      "closedNow": "Closed now",
+      "closedToday": "Closed today",
+      "nextOpen": "Next open",
+      "error": {
+        "title": "Doctor not found",
+        "description": "The doctor you're looking for doesn't exist or has been removed.",
+        "goBack": "Go Back to Doctors List"
+      },
+      "schedule": {
+        "mon": "Monday",
+        "tue": "Tuesday",
+        "wed": "Wednesday",
+        "thu": "Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sun": "Sunday",
+        "closed": "Closed"
+      }
     }
   },
   "language": {

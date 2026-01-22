@@ -1,15 +1,10 @@
 'use client';
 
 import React from 'react';
-import {
-  Layout,
-  type RouteConfig,
-  type NavigationConfig,
-} from '@doctor-booking/necktie-ui';
-import LanguageSwitcher from '../LanguageSwitcher';
-import DoctorsList from '../DoctorsList';
+import DoctorsLayout from '@/components/DoctorsLayout';
+import DoctorsList from '@/components/DoctorsList';
 import { useTranslation } from 'react-i18next';
-import { Doctor } from '../../lib/types';
+import { Doctor } from '@/lib/types';
 import { ErrorState, EmptyState } from './sub-components';
 import styles from './DoctorsPageContent.module.scss';
 
@@ -23,27 +18,6 @@ export default function DoctorsPageContent({
   initialError,
 }: DoctorsPageContentProps) {
   const { t } = useTranslation('common');
-
-  const navigationConfig: NavigationConfig = {
-    routes: [
-      {
-        id: 'home',
-        title: t('navigation.home', 'Home'),
-        url: '/',
-      },
-      {
-        id: 'bookings',
-        title: t('navigation.bookings', 'My Bookings'),
-        url: '/bookings',
-      },
-    ],
-    onRouteClick: (route: RouteConfig) => {
-      // Navigation is handled by Next.js routing
-      if (route.url) {
-        globalThis.location.href = route.url;
-      }
-    },
-  };
 
   const renderDoctorsSection = () => {
     if (initialError) {
@@ -62,16 +36,7 @@ export default function DoctorsPageContent({
   };
 
   return (
-    <Layout
-      navigation={navigationConfig}
-      activeRouteId="home"
-      userName="John Doe"
-      onUserMenuClick={() => {
-        // Handle user menu click - will be implemented later
-        alert('User menu clicked');
-      }}
-      headerActions={<LanguageSwitcher />}
-    >
+    <DoctorsLayout activeRouteId="home">
       <div className={styles.doctorsPage}>
         <div className={styles.container}>
           <section className={styles.heroSection}>
@@ -111,6 +76,6 @@ export default function DoctorsPageContent({
           </section>
         </div>
       </div>
-    </Layout>
+    </DoctorsLayout>
   );
 }

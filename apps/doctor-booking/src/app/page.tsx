@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import { Doctor } from '../lib/types';
-import DoctorsPageContent from '../components/DoctorsPageContent';
-import DoctorsLoading from '../components/DoctorsLoading';
-import { makeExternalApiRequest } from './api/api-config';
+import { Doctor } from '@/lib/types';
+import DoctorsPageContent from '@/components/DoctorsPageContent';
+import DoctorsLoading from '@/components/DoctorsLoading';
+import { makeExternalApiRequest } from '@/api/api-config';
 
 export const metadata: Metadata = {
   title: 'Find the Best Doctors | Doctor Booking App',

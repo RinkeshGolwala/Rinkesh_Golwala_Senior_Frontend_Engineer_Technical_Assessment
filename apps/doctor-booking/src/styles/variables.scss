@@ -10,6 +10,10 @@ $color-warning: #ffc107;
 $color-danger: #dc3545;
 $color-info: #17a2b8;
 
+// Text color shortcuts
+$text-primary: $color-text-primary;
+$text-secondary: $color-text-secondary;
+
 // Breakpoints
 $mobile: 320px;
 $tablet: 768px;

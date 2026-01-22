@@ -1,3 +1,5 @@
+import { DayOfWeek } from '@/lib';
+
 export interface Doctor {
   id: string;
   name: string;
@@ -14,7 +16,7 @@ export interface OpeningHour {
   start: string;
   end: string;
   isClosed: boolean;
-  day: 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN';
+  day: DayOfWeek;
 }
 
 export interface DoctorsListResponse {

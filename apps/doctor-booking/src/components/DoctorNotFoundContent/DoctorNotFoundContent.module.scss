@@ -1,0 +1,85 @@
+@import "@/styles/variables.scss";
+@import "@/styles/_mixins.scss";
+
+.container {
+  padding: 3rem 1.5rem;
+  max-width: 32rem;
+  margin: 0 auto;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile-first(tablet) {
+    padding: 2rem 1rem;
+  }
+}
+
+.backLink {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.errorCard {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  @include mobile-first(tablet) {
+    padding: 3rem 2rem;
+  }
+}
+
+.errorContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon {
+  opacity: 0.6;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 0;
+
+  @include mobile-first(tablet) {
+    font-size: 1.75rem;
+  }
+}
+
+.description {
+  font-size: 1rem;
+  color: $text-secondary;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 24rem;
+}
+
+.actions {
+  margin-top: 1rem;
+
+  button {
+    min-width: 12rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+}

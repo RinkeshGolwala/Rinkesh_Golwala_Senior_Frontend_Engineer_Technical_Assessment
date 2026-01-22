@@ -1,8 +1,10 @@
-@use '../../styles/mixins' as mixins;
+@use "../../styles/mixins" as mixins;
 
 .doctorCard {
   width: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -84,6 +86,23 @@
     flex: 1;
     order: unset;
     width: auto;
+  }
+}
+
+.detailsLink {
+  // Mobile-first approach
+  order: 2;
+  width: 100%;
+  text-decoration: none;
+
+  @include mixins.mobile-first(tablet) {
+    flex: 1;
+    order: unset;
+    width: auto;
+  }
+
+  &:hover {
+    text-decoration: none;
   }
 }
 
