@@ -5,6 +5,8 @@ import { ReactNode, useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { initI18next } from './config';
 import { LanguageProvider } from './LanguageContext';
+import DoctorsLoading from '@/components/DoctorsLoading';
+import { ErrorState } from '../../components/DoctorsPageContent/sub-components';
 
 interface I18nProviderProps {
   children: ReactNode;
@@ -30,18 +32,16 @@ export function I18nProvider({ children, locale = 'en' }: I18nProviderProps) {
     initialize();
   }, [locale]);
 
-  // TODO: Add a skeleton ui
   if (isLoading) {
     return (
       <div className="loading-container">
-        <div className="loading-spinner">Loading...</div>
+        <DoctorsLoading />
       </div>
     );
   }
 
-  // TODO: Add an error UI
   if (!i18n) {
-    return <div>Error loading translations</div>;
+    return <ErrorState error="Error loading translations" />;
   }
 
   return (
