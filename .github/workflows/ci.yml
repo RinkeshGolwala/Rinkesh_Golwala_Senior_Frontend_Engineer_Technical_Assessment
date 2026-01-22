@@ -46,6 +46,8 @@ jobs:
 
       - name: Build packages
         run: pnpm run build
+        env:
+          NODE_ENV: production
 
       - name: Build Storybook
         run: pnpm run build-storybook --filter=necktie-ui
