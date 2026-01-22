@@ -1,0 +1,64 @@
+{
+  "confirmation": {
+    "title": "Confirm Your Appointment",
+    "appointmentDetails": "Appointment Details",
+    "doctor": "Doctor",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "patientInfo": "Patient Information",
+    "patientName": "Patient Name",
+    "namePlaceholder": "Enter patient full name",
+    "importantNotes": "Important Notes",
+    "arriveEarly": "Please arrive 15 minutes before your appointment",
+    "bringId": "Please bring a valid ID and insurance card",
+    "cancelPolicy": "Cancellations must be made at least 24 hours in advance",
+    "cancel": "Cancel",
+    "confirm": "Confirm Booking",
+    "processing": "Processing..."
+  },
+  "validation": {
+    "nameRequired": "Patient name is required",
+    "nameMinLength": "Patient name must be at least 2 characters",
+    "nameMaxLength": "Patient name must be less than 100 characters",
+    "nameInvalid": "Patient name can only contain letters and spaces",
+    "dateRequired": "Please select a date",
+    "pastDate": "Cannot book appointments for past dates",
+    "tooFarFuture": "Cannot book appointments more than 3 months in advance",
+    "timeRequired": "Please select a time slot",
+    "timeInvalidFormat": "Invalid time format",
+    "pastTime": "Please select a time at least 2 hours from now",
+    "doctorRequired": "Doctor selection is required"
+  },
+  "error": {
+    "generic": "Failed to book appointment. Please try again."
+  },
+  "success": {
+    "title": "Booking Confirmed!",
+    "subtitle": "Your appointment has been successfully booked.",
+    "loading": "Loading booking details...",
+    "errorLoading": "Failed to load booking details",
+    "invalidBookingId": "Invalid booking ID",
+    "errorTitle": "Something went wrong",
+    "invalidBooking": {
+      "title": "Invalid Booking",
+      "message": "No booking ID was provided.",
+      "returnHome": "Return to Home"
+    },
+    "appointmentDetails": "Appointment Details",
+    "bookingId": "Booking ID",
+    "patient": "Patient",
+    "date": "Date",
+    "time": "Time",
+    "status": "Status",
+    "confirmed": "Confirmed",
+    "importantInfo": "Important Information",
+    "confirmationEmail": "A confirmation email will be sent to you shortly",
+    "arriveEarly": "Please arrive 15 minutes before your appointment",
+    "bringDocuments": "Please bring a valid ID and insurance card",
+    "cancelPolicy": "To cancel or reschedule, please call at least 24 hours in advance",
+    "viewBookings": "View All Bookings",
+    "bookAnother": "Book Another Appointment",
+    "needHelp": "Need help? Contact our support team or visit your bookings page to manage your appointments."
+  }
+}

@@ -42,6 +42,7 @@ export interface CreateBookingPayload {
   start: number;
   doctorId: string;
   date: string; // YYYY-MM-DD format
+  status: BookingStatus;
 }
 
 export interface UpdateBookingPayload {

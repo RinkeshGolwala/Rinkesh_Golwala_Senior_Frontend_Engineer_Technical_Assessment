@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 
 import { Button, Calendar, TimeSlotList } from '@doctor-booking/necktie-ui';
-import { Doctor, OpeningHour } from '@/lib/types';
+import { Doctor } from '@/lib/types';
 import DoctorsLayout from '@/components/DoctorsLayout';
+import BookingConfirmationModal from '@/components/BookingConfirmationModal';
 import { getOpeningHoursStatus } from '@/lib/utils/doctorUtils';
+import { getAdjustedOpeningHourForDate } from '@/lib/utils/timeSlotUtils';
 import styles from './DoctorDetailsPageContent.module.scss';
-import { DAY_NAMES } from '@/lib';
 
 interface DoctorDetailsPageContentProps {
   doctor: Doctor;
@@ -17,47 +19,70 @@ interface DoctorDetailsPageContentProps {
 export default function DoctorDetailsPageContent({
   doctor,
 }: DoctorDetailsPageContentProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['doctors', 'bookings']);
+  const router = useRouter();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [selectedTime, setSelectedTime] = useState<string>('');
-  const [isBooking, setIsBooking] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
 
   const { isOpenToday, isOpenNow, nextOpenDay } = getOpeningHoursStatus(
     doctor.opening_hours
   );
 
-  // Helper function to get opening hour for selected date
-  const getOpeningHourForDate = (date: Date): OpeningHour | undefined => {
-    const selectedDayName = DAY_NAMES[date.getDay()];
-    return doctor.opening_hours.find((hour) => hour.day === selectedDayName);
-  };
+  const handleBookAppointment = () => {
+    // Clear previous errors
+    setBookingError(null);
+    setValidationErrors({});
 
-  const handleBookAppointment = async () => {
-    if (!selectedDate || !selectedTime) return;
+    if (!selectedDate || !selectedTime) {
+      const errors: Record<string, string> = {};
 
-    setIsBooking(true);
-    try {
-      // TODO: Implement booking API call
-      console.log('Booking appointment:', {
-        doctorId: doctor.id,
-        date: selectedDate,
-        time: selectedTime,
-      });
+      if (!selectedDate) {
+        errors.date = t(
+          'bookings:validation.dateRequired',
+          'Please select a date'
+        );
+      }
 
-      // Show success message or redirect
-      alert(
-        `Appointment booked for ${selectedDate.toLocaleDateString()} at ${selectedTime}`
-      );
-    } catch (error) {
-      console.error('Error booking appointment:', error);
-      alert('Failed to book appointment. Please try again.');
-    } finally {
-      setIsBooking(false);
+      if (!selectedTime) {
+        errors.time = t(
+          'bookings:validation.timeRequired',
+          'Please select a time slot'
+        );
+      }
+
+      setValidationErrors(errors);
+      return;
     }
+
+    setShowConfirmationModal(true);
   };
 
-  const canShowTimeSlots = selectedDate && getOpeningHourForDate(selectedDate);
-  const canBookAppointment = selectedDate && selectedTime && !isBooking;
+  const handleBookingSuccess = (bookingId: string) => {
+    // Navigate to success page
+    router.push(`/booking/success?id=${bookingId}`);
+  };
+
+  const handleBookingError = (error: string) => {
+    setBookingError(error);
+    setShowConfirmationModal(false);
+  };
+
+  const handleCloseModal = () => {
+    setShowConfirmationModal(false);
+  };
+
+  const canShowTimeSlots =
+    selectedDate &&
+    getAdjustedOpeningHourForDate(selectedDate, doctor.opening_hours) &&
+    !getAdjustedOpeningHourForDate(selectedDate, doctor.opening_hours)
+      ?.isClosed;
+  const canBookAppointment =
+    selectedDate && selectedTime && !Object.keys(validationErrors).length;
 
   return (
     <DoctorsLayout activeRouteId="back">
@@ -77,14 +102,14 @@ export default function DoctorDetailsPageContent({
               className={`${styles.status} ${isOpenNow ? styles.statusOpen : styles.statusClosed}`}
             >
               {isOpenNow
-                ? t('doctors.details.openNow', 'Open now')
+                ? t('doctors:details.openNow', 'Open now')
                 : isOpenToday
-                  ? t('doctors.details.closedNow', 'Closed now')
-                  : t('doctors.details.closedToday', 'Closed today')}
+                  ? t('doctors:details.closedNow', 'Closed now')
+                  : t('doctors:details.closedToday', 'Closed today')}
             </div>
             {!isOpenToday && nextOpenDay && (
               <p className={styles.nextOpenInfo}>
-                {t('doctors.details.nextOpen', 'Next open')}: {nextOpenDay}
+                {t('doctors:details.nextOpen', 'Next open')}: {nextOpenDay}
               </p>
             )}
           </div>
@@ -94,7 +119,7 @@ export default function DoctorDetailsPageContent({
         {doctor.description && (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>
-              {t('doctors.details.about', 'About')}
+              {t('doctors:details.about', 'About')}
             </h2>
             <p className={styles.description}>{doctor.description}</p>
           </section>
@@ -103,14 +128,14 @@ export default function DoctorDetailsPageContent({
         {/* Booking Section */}
         <section className={styles.bookingSection}>
           <h2 className={styles.sectionTitle}>
-            {t('doctors.details.bookAppointment', 'Book an Appointment')}
+            {t('doctors:details.bookAppointment', 'Book an Appointment')}
           </h2>
 
           <div className={styles.bookingGrid}>
             {/* Calendar */}
             <div className={styles.calendarContainer}>
               <h3 className={styles.stepTitle}>
-                {t('doctors.details.selectDate', 'Select Date')}
+                {t('doctors:details.selectDate', 'Select Date')}
               </h3>
               <Calendar
                 openingHours={doctor.opening_hours}
@@ -123,19 +148,24 @@ export default function DoctorDetailsPageContent({
             {canShowTimeSlots && (
               <div className={styles.timeSlotsContainer}>
                 <h3 className={styles.stepTitle}>
-                  {t('doctors.details.selectTime', 'Select Time')}
+                  {t('doctors:details.selectTime', 'Select Time')}
                 </h3>
                 <TimeSlotList
                   selectedDate={selectedDate}
-                  openingHour={getOpeningHourForDate(selectedDate)!}
+                  openingHour={
+                    getAdjustedOpeningHourForDate(
+                      selectedDate,
+                      doctor.opening_hours
+                    )!
+                  }
                   selectedTime={selectedTime}
                   onTimeSelect={setSelectedTime}
                   availableTimesLabel={t(
-                    'doctors.details.availableTimes',
+                    'doctors:details.availableTimes',
                     'Available Times'
                   )}
                   noSlotsLabel={t(
-                    'doctors.details.noAvailableSlots',
+                    'doctors:details.noAvailableSlots',
                     'No available time slots for this date'
                   )}
                 />
@@ -146,17 +176,25 @@ export default function DoctorDetailsPageContent({
           {/* Booking Summary & Action */}
           {selectedDate && selectedTime && (
             <div className={styles.bookingSummary}>
+              {/* Show booking error if any */}
+              {bookingError && (
+                <div className={styles.errorMessage}>
+                  <span className={styles.errorIcon}>⚠️</span>
+                  <span>{bookingError}</span>
+                </div>
+              )}
+
               <div className={styles.summaryContent}>
                 <h4 className={styles.summaryTitle}>
-                  {t('doctors.details.bookingSummary', 'Booking Summary')}
+                  {t('doctors:details.bookingSummary', 'Booking Summary')}
                 </h4>
-                <div className={styles.summaryDetails}>
+                <div className={styles.summaryContent}>
                   <p>
-                    <strong>{t('doctors.details.doctor', 'Doctor')}:</strong>{' '}
+                    <strong>{t('doctors:details.doctor', 'Doctor')}:</strong>{' '}
                     Dr. {doctor.name}
                   </p>
                   <p>
-                    <strong>{t('doctors.details.date', 'Date')}:</strong>{' '}
+                    <strong>{t('doctors:details.date', 'Date')}:</strong>{' '}
                     {selectedDate.toLocaleDateString('en-US', {
                       weekday: 'long',
                       year: 'numeric',
@@ -165,7 +203,7 @@ export default function DoctorDetailsPageContent({
                     })}
                   </p>
                   <p>
-                    <strong>{t('doctors.details.time', 'Time')}:</strong>{' '}
+                    <strong>{t('doctors:details.time', 'Time')}:</strong>{' '}
                     {selectedTime}
                   </p>
                 </div>
@@ -177,14 +215,25 @@ export default function DoctorDetailsPageContent({
                 onClick={handleBookAppointment}
                 className={styles.bookButton}
               >
-                {isBooking
-                  ? t('doctors.details.booking', 'Booking...')
-                  : t('doctors.details.confirmBooking', 'Confirm Booking')}
+                {t('doctors:details.confirmBooking', 'Confirm Booking')}
               </Button>
             </div>
           )}
         </section>
       </div>
+
+      {/* Booking Confirmation Modal */}
+      {selectedDate && selectedTime && (
+        <BookingConfirmationModal
+          open={showConfirmationModal}
+          onClose={handleCloseModal}
+          doctor={doctor}
+          selectedDate={selectedDate}
+          selectedTime={selectedTime}
+          onBookingSuccess={handleBookingSuccess}
+          onBookingError={handleBookingError}
+        />
+      )}
     </DoctorsLayout>
   );
 }

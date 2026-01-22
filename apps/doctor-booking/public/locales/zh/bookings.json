@@ -1,0 +1,64 @@
+{
+  "confirmation": {
+    "title": "确认您的预约",
+    "appointmentDetails": "预约详情",
+    "doctor": "医生",
+    "date": "日期",
+    "time": "时间",
+    "location": "地址",
+    "patientInfo": "患者信息",
+    "patientName": "患者姓名",
+    "namePlaceholder": "请输入患者全名",
+    "importantNotes": "重要提醒",
+    "arriveEarly": "请提前15分钟到达",
+    "bringId": "请携带有效身份证件和医保卡",
+    "cancelPolicy": "取消预约须至少提前24小时",
+    "cancel": "取消",
+    "confirm": "确认预约",
+    "processing": "处理中..."
+  },
+  "validation": {
+    "nameRequired": "患者姓名为必填项",
+    "nameMinLength": "患者姓名至少需要2个字符",
+    "nameMaxLength": "患者姓名不能超过100个字符",
+    "nameInvalid": "患者姓名只能包含字母和空格",
+    "dateRequired": "请选择日期",
+    "pastDate": "不能预约过去的日期",
+    "tooFarFuture": "不能预约超过3个月的日期",
+    "timeRequired": "请选择时间段",
+    "timeInvalidFormat": "时间格式无效",
+    "pastTime": "请选择至少2小时后的时间",
+    "doctorRequired": "必须选择医生"
+  },
+  "error": {
+    "generic": "预约失败，请重试。"
+  },
+  "success": {
+    "title": "预约确认！",
+    "subtitle": "您的预约已成功提交。",
+    "loading": "加载预约详情中...",
+    "errorLoading": "加载预约详情失败",
+    "invalidBookingId": "无效的预约ID",
+    "errorTitle": "出现了问题",
+    "invalidBooking": {
+      "title": "无效预约",
+      "message": "未提供预约ID。",
+      "returnHome": "返回首页"
+    },
+    "appointmentDetails": "预约详情",
+    "bookingId": "预约编号",
+    "patient": "患者",
+    "date": "日期",
+    "time": "时间",
+    "status": "状态",
+    "confirmed": "已确认",
+    "importantInfo": "重要信息",
+    "confirmationEmail": "确认邮件将很快发送给您",
+    "arriveEarly": "请提前15分钟到达",
+    "bringDocuments": "请携带有效身份证件和医保卡",
+    "cancelPolicy": "如需取消或重新安排，请至少提前24小时致电",
+    "viewBookings": "查看所有预约",
+    "bookAnother": "预约其他医生",
+    "needHelp": "需要帮助？请联系我们的客服团队或访问预约页面管理您的预约。"
+  }
+}

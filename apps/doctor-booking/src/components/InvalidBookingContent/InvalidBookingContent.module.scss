@@ -1,0 +1,51 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.container {
+  padding: $spacing-xl;
+  text-align: center;
+  max-width: 500px;
+  margin: $spacing-xl auto;
+
+  @include mobile-first(tablet) {
+    padding: $spacing-xxl;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+
+  @include mobile-first(tablet) {
+    font-size: 1.75rem;
+  }
+}
+
+.message {
+  font-size: 1rem;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-lg;
+  line-height: 1.5;
+}
+
+.returnLink {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: 600;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: $color-primary-light;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 0, 104, 0.1);
+  }
+}
