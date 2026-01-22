@@ -31,6 +31,8 @@ export default defineConfig([
       typescript({
         tsconfig: './tsconfig.json',
         exclude: ['**/*.stories.tsx', '**/*.test.tsx'],
+        declaration: true,
+        declarationDir: 'dist',
       }),
       postcss({
         extract: true,
@@ -39,11 +41,5 @@ export default defineConfig([
       }),
     ],
     external: ['react', 'react-dom'],
-  },
-  {
-    input: 'dist/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-    external: [/\.scss$/],
   },
 ]);

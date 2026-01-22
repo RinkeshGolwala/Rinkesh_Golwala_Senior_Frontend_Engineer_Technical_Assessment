@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "es6"],
@@ -11,11 +12,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./dist"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "stories", "tests"]
+  "include": ["src", "stories"],
+  "exclude": ["node_modules", "dist", "tests"]
 }

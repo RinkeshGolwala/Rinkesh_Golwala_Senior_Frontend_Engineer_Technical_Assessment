@@ -6,7 +6,7 @@ export { default as Layout } from './components/Layout';
 export { default as Modal } from './components/Modal';
 export { default as Skeleton } from './components/Skeleton';
 export { default as Switch } from './components/Switch';
-export { default as TimeSlot } from './components/TimeSlot';
+export { default as TimeSlot, TimeSlotList } from './components/TimeSlot';
 
 // Export skeleton sub-components
 export { SkeletonDoctorCard, SkeletonBookingCard } from './components/Skeleton';
@@ -27,4 +27,4 @@ export type {
   SkeletonBookingCardProps,
 } from './components/Skeleton';
 export type { SwitchProps } from './components/Switch';
-export type { TimeSlotProps } from './components/TimeSlot';
+export type { TimeSlotProps, TimeSlotListProps } from './components/TimeSlot';

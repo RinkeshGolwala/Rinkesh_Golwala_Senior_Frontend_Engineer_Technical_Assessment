@@ -1,273 +1,279 @@
-@use '../../styles/variables' as vars;
-@use '../../styles/mixins';
+@use "../../styles/variables" as vars;
+@use "../../styles/mixins";
 
 .necktie-calendar {
-    @include mixins.card(vars.$spacing-lg, vars.$shadow-md);
-    @include mixins.multilingual-text();
+  @include mixins.card(vars.$spacing-lg, vars.$shadow-md);
+  @include mixins.multilingual-text();
 
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  // Make it responsive
+  @include mixins.mobile-first(tablet) {
     max-width: 400px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: vars.$spacing-lg;
+    padding-bottom: vars.$spacing-md;
+    border-bottom: 1px solid vars.$color-gray-200;
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid vars.$color-gray-300;
+    border-radius: 50%;
+    background: vars.$color-white;
+    color: vars.$color-gray-700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background: vars.$color-gray-500;
+      border-color: vars.$color-primary;
+      color: vars.$color-primary;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__month-year {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: vars.$color-dark;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+  }
+
+  &__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: vars.$spacing-xs;
+    margin-bottom: vars.$spacing-md;
     width: 100%;
+  }
+
+  &__weekday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: vars.$color-gray-600;
+    text-transform: uppercase;
+    min-width: 0;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: vars.$spacing-xs;
+    width: 100%;
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: vars.$border-radius-md;
+    background: transparent;
+    color: vars.$color-gray-400;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 0;
     box-sizing: border-box;
 
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: vars.$spacing-lg;
-        padding-bottom: vars.$spacing-md;
-        border-bottom: 1px solid vars.$color-gray-200;
+    &--current-month {
+      color: vars.$color-gray-700;
+
+      &:hover:not(&--disabled) {
+        background: vars.$color-gray-100;
+        border-color: vars.$color-gray-300;
+      }
     }
 
-    &__nav-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: 1px solid vars.$color-gray-300;
-        border-radius: 50%;
-        background: vars.$color-white;
-        color: vars.$color-gray-700;
-        font-size: 1.25rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        flex-shrink: 0;
+    &--available {
+      color: vars.$color-dark;
+      cursor: pointer;
 
-        &:hover {
-            background: vars.$color-gray-500;
-            border-color: vars.$color-primary;
-            color: vars.$color-primary;
-        }
-
-        &:active {
-            transform: scale(0.95);
-        }
+      &:hover {
+        background: vars.$color-primary-light;
+        border-color: vars.$color-primary;
+        color: vars.$color-primary;
+      }
     }
 
-    &__month-year {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: vars.$color-dark;
-        margin: 0;
-        text-align: center;
-        flex: 1;
+    &--selected {
+      background: vars.$color-primary;
+      border-color: vars.$color-primary;
+      color: vars.$color-white;
+      font-weight: 600;
+
+      &:hover {
+        background: vars.$color-dark;
+        border-color: vars.$color-dark;
+      }
     }
 
-    &__weekdays {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: vars.$spacing-xs;
-        margin-bottom: vars.$spacing-md;
-        width: 100%;
-    }
+    &--disabled {
+      color: vars.$color-gray-300;
+      cursor: not-allowed;
 
-    &__weekday {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: vars.$color-gray-600;
-        text-transform: uppercase;
-        min-width: 0;
-    }
-
-    &__days {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: vars.$spacing-xs;
-        width: 100%;
-    }
-
-    &__day {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        border: 1px solid transparent;
-        border-radius: vars.$border-radius-md;
+      &:hover {
         background: transparent;
-        color: vars.$color-gray-400;
-        font-size: 0.875rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        min-width: 0;
-        box-sizing: border-box;
-
-        &--current-month {
-            color: vars.$color-gray-700;
-
-            &:hover:not(&--disabled) {
-                background: vars.$color-gray-100;
-                border-color: vars.$color-gray-300;
-            }
-        }
-
-        &--available {
-            color: vars.$color-dark;
-            cursor: pointer;
-
-            &:hover {
-                background: vars.$color-primary-light;
-                border-color: vars.$color-primary;
-                color: vars.$color-primary;
-            }
-        }
-
-        &--selected {
-            background: vars.$color-primary;
-            border-color: vars.$color-primary;
-            color: vars.$color-white;
-            font-weight: 600;
-
-            &:hover {
-                background: vars.$color-dark;
-                border-color: vars.$color-dark;
-            }
-        }
-
-        &--disabled {
-            color: vars.$color-gray-300;
-            cursor: not-allowed;
-
-            &:hover {
-                background: transparent;
-                border-color: transparent;
-            }
-        }
+        border-color: transparent;
+      }
     }
+  }
 }
 
 // Mobile responsive styles
 @include mixins.mobile-first(mobile) {
-    .necktie-calendar {
-        padding: vars.$spacing-sm;
-        max-width: 100%;
-        min-width: 280px;
+  .necktie-calendar {
+    padding: vars.$spacing-sm;
+    max-width: 100%;
+    min-width: 280px;
 
-        &__header {
-            margin-bottom: vars.$spacing-sm;
-            padding-bottom: vars.$spacing-xs;
-        }
-
-        &__nav-button {
-            width: 32px;
-            height: 32px;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        &__month-year {
-            font-size: 1rem;
-            padding: 0 vars.$spacing-xs;
-        }
-
-        &__weekday {
-            height: 32px;
-            font-size: 0.6875rem;
-            padding: 0 1px;
-        }
-
-        &__day {
-            height: 32px;
-            font-size: 0.75rem;
-            border-radius: vars.$border-radius-sm;
-            min-width: 32px;
-        }
-
-        &__days {
-            gap: 1px;
-        }
-
-        &__weekdays {
-            gap: 1px;
-            margin-bottom: vars.$spacing-xs;
-        }
+    &__header {
+      margin-bottom: vars.$spacing-sm;
+      padding-bottom: vars.$spacing-xs;
     }
+
+    &__nav-button {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    &__month-year {
+      font-size: 1rem;
+      padding: 0 vars.$spacing-xs;
+    }
+
+    &__weekday {
+      height: 32px;
+      font-size: 0.6875rem;
+      padding: 0 1px;
+    }
+
+    &__day {
+      height: 32px;
+      font-size: 0.75rem;
+      border-radius: vars.$border-radius-sm;
+      min-width: 32px;
+    }
+
+    &__days {
+      gap: 1px;
+    }
+
+    &__weekdays {
+      gap: 1px;
+      margin-bottom: vars.$spacing-xs;
+    }
+  }
 }
 
 @include mixins.mobile-first(tablet) {
-    .necktie-calendar {
-        padding: vars.$spacing-md;
-        min-width: 320px;
+  .necktie-calendar {
+    padding: vars.$spacing-md;
+    min-width: 320px;
 
-        &__header {
-            margin-bottom: vars.$spacing-md;
-            padding-bottom: vars.$spacing-sm;
-        }
-
-        &__nav-button {
-            width: 36px;
-            height: 36px;
-            font-size: 1.125rem;
-        }
-
-        &__month-year {
-            font-size: 1.125rem;
-        }
-
-        &__weekday {
-            height: 36px;
-            font-size: 0.75rem;
-        }
-
-        &__day {
-            height: 36px;
-            font-size: 0.8125rem;
-            min-width: 36px;
-        }
-
-        &__days {
-            gap: 2px;
-        }
-
-        &__weekdays {
-            gap: 2px;
-            margin-bottom: vars.$spacing-sm;
-        }
+    &__header {
+      margin-bottom: vars.$spacing-md;
+      padding-bottom: vars.$spacing-sm;
     }
+
+    &__nav-button {
+      width: 36px;
+      height: 36px;
+      font-size: 1.125rem;
+    }
+
+    &__month-year {
+      font-size: 1.125rem;
+    }
+
+    &__weekday {
+      height: 36px;
+      font-size: 0.75rem;
+    }
+
+    &__day {
+      height: 36px;
+      font-size: 0.8125rem;
+      min-width: 36px;
+    }
+
+    &__days {
+      gap: 2px;
+    }
+
+    &__weekdays {
+      gap: 2px;
+      margin-bottom: vars.$spacing-sm;
+    }
+  }
 }
 
 @include mixins.mobile-first(desktop) {
-    .necktie-calendar {
-        padding: vars.$spacing-lg;
-        min-width: 360px;
+  .necktie-calendar {
+    padding: vars.$spacing-lg;
+    min-width: 360px;
 
-        &__header {
-            margin-bottom: vars.$spacing-lg;
-            padding-bottom: vars.$spacing-md;
-        }
-
-        &__nav-button {
-            width: 40px;
-            height: 40px;
-            font-size: 1.25rem;
-        }
-
-        &__month-year {
-            font-size: 1.25rem;
-        }
-
-        &__weekday {
-            height: 40px;
-            font-size: 0.875rem;
-        }
-
-        &__day {
-            height: 40px;
-            font-size: 0.875rem;
-            min-width: 40px;
-        }
-
-        &__days {
-            gap: vars.$spacing-xs;
-        }
-
-        &__weekdays {
-            gap: vars.$spacing-xs;
-            margin-bottom: vars.$spacing-md;
-        }
+    &__header {
+      margin-bottom: vars.$spacing-lg;
+      padding-bottom: vars.$spacing-md;
     }
+
+    &__nav-button {
+      width: 40px;
+      height: 40px;
+      font-size: 1.25rem;
+    }
+
+    &__month-year {
+      font-size: 1.25rem;
+    }
+
+    &__weekday {
+      height: 40px;
+      font-size: 0.875rem;
+    }
+
+    &__day {
+      height: 40px;
+      font-size: 0.875rem;
+      min-width: 40px;
+    }
+
+    &__days {
+      gap: vars.$spacing-xs;
+    }
+
+    &__weekdays {
+      gap: vars.$spacing-xs;
+      margin-bottom: vars.$spacing-md;
+    }
+  }
 }

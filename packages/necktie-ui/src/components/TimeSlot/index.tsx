@@ -23,6 +23,10 @@ export interface TimeSlotListProps extends React.HTMLAttributes<HTMLDivElement> 
   onTimeSelect?: (time: string) => void;
   /** Duration of each slot in minutes */
   slotDuration?: number;
+  /** Label for available times title */
+  availableTimesLabel?: string;
+  /** Label for no available slots message */
+  noSlotsLabel?: string;
 }
 
 const TimeSlot = React.forwardRef<HTMLButtonElement, TimeSlotProps>(
@@ -61,6 +65,8 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
       selectedTime,
       onTimeSelect,
       slotDuration = 60,
+      availableTimesLabel = 'Available Times',
+      noSlotsLabel = 'No available time slots for this date',
       className,
       ...props
     },
@@ -139,9 +145,7 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
           )}
           {...props}
         >
-          <p className="necktie-timeslot-list__empty-message">
-            No available time slots for this date
-          </p>
+          <p className="necktie-timeslot-list__empty-message">{noSlotsLabel}</p>
         </div>
       );
     }
@@ -153,7 +157,9 @@ const TimeSlotList = React.forwardRef<HTMLDivElement, TimeSlotListProps>(
         {...props}
       >
         <div className="necktie-timeslot-list__header">
-          <h4 className="necktie-timeslot-list__title">Available Times</h4>
+          <h4 className="necktie-timeslot-list__title">
+            {availableTimesLabel}
+          </h4>
           <p className="necktie-timeslot-list__date">
             {selectedDate.toLocaleDateString('en-US', {
               weekday: 'long',

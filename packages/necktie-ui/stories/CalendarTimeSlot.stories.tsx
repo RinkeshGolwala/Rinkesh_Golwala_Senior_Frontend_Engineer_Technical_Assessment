@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import Calendar, { OpeningHour } from '../src/components/Calendar';
 import { TimeSlotList } from '../src/components/TimeSlot';
@@ -15,7 +15,7 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-} satisfies Meta<{}>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -118,6 +118,8 @@ export const CompleteBookingFlow: Story = {
               openingHour={getOpeningHourForDate(selectedDate)!}
               selectedTime={selectedTime}
               onTimeSelect={setSelectedTime}
+              availableTimesLabel="Available Times"
+              noSlotsLabel="No available time slots for this date"
             />
           </div>
         )}
@@ -211,6 +213,8 @@ export const WeekendOnlyHours: Story = {
               openingHour={getOpeningHourForDate(selectedDate, weekendHours)!}
               selectedTime={selectedTime}
               onTimeSelect={setSelectedTime}
+              availableTimesLabel="Weekend Times Available"
+              noSlotsLabel="No weekend slots available"
             />
           </div>
         )}

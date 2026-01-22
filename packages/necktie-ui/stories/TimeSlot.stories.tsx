@@ -114,6 +114,8 @@ export const TimeSlotListToday: Story = {
           openingHour={mockOpeningHour}
           selectedTime={selectedTime}
           onTimeSelect={setSelectedTime}
+          availableTimesLabel="Available Times"
+          noSlotsLabel="No available time slots for this date"
         />
         <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#666' }}>
           Note: Past time slots are automatically filtered out for today's date
@@ -143,6 +145,8 @@ export const NoAvailableSlots: Story = {
           openingHour={closedHours}
           selectedTime=""
           onTimeSelect={() => {}}
+          availableTimesLabel="Available Times"
+          noSlotsLabel="Doctor is closed on this day"
         />
       </div>
     );
@@ -171,6 +175,8 @@ export const ShortHours: Story = {
           openingHour={shortHours}
           selectedTime={selectedTime}
           onTimeSelect={setSelectedTime}
+          availableTimesLabel="Available Times (Limited)"
+          noSlotsLabel="No slots available in this short window"
         />
       </div>
     );
