@@ -1,0 +1,63 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: $color-white;
+  min-height: 100vh;
+
+  h1 {
+    color: $color-primary;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .bookingCardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    display: grid;
+  }
+
+  .bookingStatus {
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 10px;
+      margin-right: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .confirmed {
+    &::before {
+      background-color: #28a745;
+    }
+  }
+
+  .cancelled {
+    &::before {
+      background-color: $color-danger;
+    }
+  }
+
+  .actions {
+    margin-top: 1rem;
+  }
+
+  // Responsive styles
+  @include mobile-first(tablet) {
+    padding: 24px 32px;
+    h1 {
+      font-size: 2rem;
+    }
+    .bookingsList {
+      gap: 20px;
+    }
+  }
+}
