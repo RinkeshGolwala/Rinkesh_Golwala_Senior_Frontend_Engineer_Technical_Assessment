@@ -21,7 +21,6 @@ export type {
 export { getOpeningHoursStatus, getCurrentDay } from './utils/doctorUtils';
 
 // React hooks
-export { useDoctors, useDoctor } from './hooks/useDoctors';
 export {
   useBookings,
   useBooking,
