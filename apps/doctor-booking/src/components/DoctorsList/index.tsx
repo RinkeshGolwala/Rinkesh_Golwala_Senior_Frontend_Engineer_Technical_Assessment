@@ -18,10 +18,6 @@ interface DoctorsListProps {
 export default function DoctorsList({ doctors }: DoctorsListProps) {
   const router = useRouter();
 
-  const handleBookAppointment = (doctorId: string) => {
-    router.push(`/doctors/${doctorId}/book`);
-  };
-
   const handleViewDetails = (doctorId: string) => {
     router.push(`/doctors/${doctorId}`);
   };
@@ -32,7 +28,6 @@ export default function DoctorsList({ doctors }: DoctorsListProps) {
         <DoctorCard
           key={doctor.id}
           doctor={doctor}
-          onBookAppointment={handleBookAppointment}
           onViewDetails={handleViewDetails}
         />
       ))}

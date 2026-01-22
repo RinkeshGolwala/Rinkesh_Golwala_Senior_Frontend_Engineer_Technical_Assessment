@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Card } from '@doctor-booking/necktie-ui';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,16 +11,15 @@ import styles from './DoctorCard.module.scss';
 
 export interface DoctorCardProps {
   doctor: Doctor;
-  onBookAppointment?: (doctorId: string) => void;
   onViewDetails?: (doctorId: string) => void;
   className?: string;
 }
 
 export default function DoctorCard({
   doctor,
-  onBookAppointment,
   className = '',
 }: DoctorCardProps) {
+  const router = useRouter();
   const { t } = useTranslation('doctors');
 
   const formatAddress = (address: Doctor['address']) => {
@@ -60,19 +59,18 @@ export default function DoctorCard({
         </div>
 
         <div className={styles.actions}>
-          <Link href={`/doctors/${doctor.id}`} className={styles.detailsLink}>
-            <Button
-              variant="secondary"
-              size="sm"
-              className={styles.detailsButton}
-            >
-              {t('card.viewDetails', 'View Details')}
-            </Button>
-          </Link>
+          <Button
+            variant="secondary"
+            size="sm"
+            className={styles.detailsButton}
+            onClick={() => router.push(`/doctors/${doctor.id}`)}
+          >
+            {t('card.viewDetails', 'View Details')}
+          </Button>
           <Button
             variant="primary"
             size="sm"
-            onClick={() => onBookAppointment?.(doctor.id)}
+            onClick={() => router.push(`/doctors/${doctor.id}`)}
             className={styles.bookButton}
           >
             {t('card.consult', 'Consult')}

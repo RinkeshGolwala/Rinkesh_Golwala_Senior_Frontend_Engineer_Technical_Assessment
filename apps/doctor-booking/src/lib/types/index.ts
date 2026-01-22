@@ -52,9 +52,7 @@ export interface UpdateBookingPayload {
   date?: string;
 }
 
-export interface BookingsListResponse {
-  bookings: Booking[];
-}
+export type BookingsListResponse = Booking[];
 
 // API Error Response
 export interface ApiError {

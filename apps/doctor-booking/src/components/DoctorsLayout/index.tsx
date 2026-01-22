@@ -40,7 +40,7 @@ export default function DoctorsLayout({
       {
         id: 'bookings',
         title: t('navigation.bookings', 'My Bookings'),
-        url: '/bookings',
+        url: '/booking',
       },
     ];
   };
