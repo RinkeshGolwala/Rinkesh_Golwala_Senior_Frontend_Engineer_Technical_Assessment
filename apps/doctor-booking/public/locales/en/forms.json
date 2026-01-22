@@ -1,0 +1,10 @@
+{
+  "form": {
+    "required": "This field is required",
+    "invalid": "Please enter a valid value",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "reset": "Reset"
+  }
+}

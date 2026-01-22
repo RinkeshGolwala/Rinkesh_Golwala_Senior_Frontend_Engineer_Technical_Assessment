@@ -1,0 +1,57 @@
+{
+  "title": "可用医生",
+  "subtitle": "从我们的专业医疗网络中选择",
+  "loading": "加载医生列表中...",
+  "empty": {
+    "title": "暂无医生",
+    "description": "我们目前找不到任何医生，请稍后再试。"
+  },
+  "error": {
+    "title": "无法加载医生",
+    "retry": "重试"
+  },
+  "card": {
+    "viewDetails": "查看详情",
+    "consult": "咨询",
+    "openToday": "今日营业",
+    "closedToday": "今日关闭"
+  },
+  "details": {
+    "backToList": "返回医生列表",
+    "about": "关于",
+    "address": "地址",
+    "availableTimes": "可用时间",
+    "noAvailableSlots": "该日期没有可用时间段",
+    "openingHours": "营业时间",
+    "bookAppointment": "预约",
+    "consultNow": "立即咨询",
+    "selectDate": "选择日期",
+    "selectTime": "选择时间",
+    "bookingSummary": "预约摘要",
+    "doctor": "医生",
+    "date": "日期",
+    "time": "时间",
+    "booking": "预约中...",
+    "confirmBooking": "确认预约",
+    "loading": "加载医生详情中...",
+    "openNow": "营业中",
+    "closedNow": "已关闭",
+    "closedToday": "今日关闭",
+    "nextOpen": "下次营业",
+    "error": {
+      "title": "医生未找到",
+      "description": "您要查找的医生不存在或已被删除。",
+      "goBack": "返回医生列表"
+    },
+    "schedule": {
+      "mon": "周一",
+      "tue": "周二",
+      "wed": "周三",
+      "thu": "周四",
+      "fri": "周五",
+      "sat": "周六",
+      "sun": "周日",
+      "closed": "关闭"
+    }
+  }
+}

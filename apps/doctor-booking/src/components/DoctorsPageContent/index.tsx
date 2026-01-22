@@ -17,7 +17,7 @@ export default function DoctorsPageContent({
   initialDoctors,
   initialError,
 }: DoctorsPageContentProps) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation(['common', 'doctors']);
 
   const renderDoctorsSection = () => {
     if (initialError) {
@@ -54,7 +54,7 @@ export default function DoctorsPageContent({
                     {initialDoctors?.length || 0}
                   </span>
                   <span className={styles.statLabel}>
-                    {t('hero.stats.doctors', 'Available Doctors')}
+                    {t('common:hero.stats.doctors', 'Available Doctors')}
                   </span>
                 </div>
               </div>
@@ -63,10 +63,10 @@ export default function DoctorsPageContent({
 
           <section className={styles.doctorsSection}>
             <div className={styles.sectionHeader}>
-              <h2>{t('doctors.title', 'Available Doctors')}</h2>
+              <h2>{t('doctors:title', 'Available Doctors')}</h2>
               <p>
                 {t(
-                  'doctors.subtitle',
+                  'doctors:subtitle',
                   'Choose from our network of qualified healthcare professionals'
                 )}
               </p>

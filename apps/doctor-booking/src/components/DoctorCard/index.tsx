@@ -19,7 +19,7 @@ export default function DoctorCard({
   onBookAppointment,
   className = '',
 }: DoctorCardProps) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('doctors');
 
   const formatAddress = (address: Doctor['address']) => {
     const parts = [address.line_1, address.line_2, address.district].filter(
@@ -38,10 +38,10 @@ export default function DoctorCard({
     );
 
     if (!todayHours || todayHours.isClosed) {
-      return t('doctors.card.closedToday', 'Closed today');
+      return t('card.closedToday', 'Closed today');
     }
 
-    return `${t('doctors.card.openToday', 'Open today')}: ${todayHours.start} - ${todayHours.end}`;
+    return `${t('card.openToday', 'Open today')}: ${todayHours.start} - ${todayHours.end}`;
   };
 
   return (
@@ -64,7 +64,7 @@ export default function DoctorCard({
               size="sm"
               className={styles.detailsButton}
             >
-              {t('doctors.card.viewDetails', 'View Details')}
+              {t('card.viewDetails', 'View Details')}
             </Button>
           </Link>
           <Button
@@ -73,7 +73,7 @@ export default function DoctorCard({
             onClick={() => onBookAppointment?.(doctor.id)}
             className={styles.bookButton}
           >
-            {t('doctors.card.consult', 'Consult')}
+            {t('card.consult', 'Consult')}
           </Button>
         </div>
       </div>

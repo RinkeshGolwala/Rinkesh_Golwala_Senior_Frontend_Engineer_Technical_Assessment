@@ -10,7 +10,7 @@ interface ErrorStateProps {
 }
 
 export default function ErrorState({ error, onRetry }: ErrorStateProps) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('doctors');
 
   const handleRetry = () => {
     if (onRetry) {
@@ -35,10 +35,10 @@ export default function ErrorState({ error, onRetry }: ErrorStateProps) {
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="12" y1="16" x2="12.01" y2="16" />
         </svg>
-        <h3>{t('doctors.error.title', 'Unable to load doctors')}</h3>
+        <h3>{t('error.title', 'Unable to load doctors')}</h3>
         <p>{error}</p>
         <button onClick={handleRetry} className={styles.retryButton}>
-          {t('doctors.error.retry', 'Try Again')}
+          {t('error.retry', 'Try Again')}
         </button>
       </div>
     </div>

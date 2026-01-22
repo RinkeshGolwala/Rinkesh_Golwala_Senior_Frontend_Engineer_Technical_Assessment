@@ -7,7 +7,7 @@ import DoctorsLayout from '@/components/DoctorsLayout';
 import styles from './DoctorNotFoundContent.module.scss';
 
 export default function DoctorNotFoundContent() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('doctors');
 
   return (
     <DoctorsLayout>
@@ -28,14 +28,14 @@ export default function DoctorNotFoundContent() {
                 />
               </svg>
             </div>
-            <h1 className={styles.title}>{t('doctors.details.error.title')}</h1>
+            <h1 className={styles.title}>{t('details.error.title')}</h1>
             <p className={styles.description}>
-              {t('doctors.details.error.description')}
+              {t('details.error.description')}
             </p>
             <div className={styles.actions}>
               <Link href="/">
                 <Button variant="primary" size="lg">
-                  {t('doctors.details.error.goBack')}
+                  {t('details.error.goBack')}
                 </Button>
               </Link>
             </div>
