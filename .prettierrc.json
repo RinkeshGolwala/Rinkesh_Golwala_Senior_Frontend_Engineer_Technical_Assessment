@@ -21,6 +21,14 @@
       "options": {
         "printWidth": 120
       }
+    },
+    {
+      "files": ["*.css", "*.scss"],
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "singleQuote": false
+      }
     }
   ]
 }

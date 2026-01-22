@@ -1,113 +1,109 @@
-@use './variables' as vars;
+@use "./variables" as vars;
 
 // Mobile-first responsive mixins
 @mixin mobile-first($breakpoint) {
-    @if $breakpoint == tablet {
-        @media (min-width: vars.$breakpoint-tablet) {
-            @content;
-        }
+  @if $breakpoint == tablet {
+    @media (min-width: vars.$breakpoint-tablet) {
+      @content;
     }
-
-    @else if $breakpoint == desktop {
-        @media (min-width: vars.$breakpoint-desktop) {
-            @content;
-        }
+  } @else if $breakpoint == desktop {
+    @media (min-width: vars.$breakpoint-desktop) {
+      @content;
     }
+  }
 }
 
 // Touch-friendly button mixin
 @mixin touch-button($padding: vars.$spacing-md) {
-    min-height: vars.$touch-target-min;
-    min-width: vars.$touch-target-min;
-    padding: $padding;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.2s ease-in-out;
+  min-height: vars.$touch-target-min;
+  min-width: vars.$touch-target-min;
+  padding: $padding;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
 
-    &:hover:not(:disabled) {
-        transform: none;
-    }
+  &:hover:not(:disabled) {
+    transform: none;
+  }
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
 // Card component mixin
 @mixin card($padding: vars.$spacing-lg, $shadow: vars.$shadow-sm) {
-    background: vars.$color-white;
-    border-radius: vars.$border-radius-lg;
-    padding: $padding;
-    box-shadow: $shadow;
-    border: 1px solid vars.$color-gray-200;
+  background: vars.$color-white;
+  border-radius: vars.$border-radius-lg;
+  padding: $padding;
+  box-shadow: $shadow;
+  border: 1px solid vars.$color-gray-200;
 }
 
 // Focus outline mixin for accessibility
 @mixin focus-outline($color: vars.$color-primary) {
-    &:focus-visible {
-        outline: 2px solid $color;
-        outline-offset: 2px;
-    }
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
 }
 
 // Font optimization for Chinese/English
 @mixin multilingual-text($size: vars.$font-size-base) {
-    font-size: $size;
-    font-family: vars.$font-family-primary;
+  font-size: $size;
+  font-family: vars.$font-family-primary;
 
-    // Optimize for Chinese characters
-    &:lang(zh),
-    &:lang(zh-HK),
-    &:lang(zh-TW) {
-        font-family: vars.$font-family-chinese;
-        font-size: #{if(sass($size == vars.$font-size-base): vars.$font-size-chinese-base; else: $size * 1.125)};
-        line-height: vars.$line-height-relaxed;
-    }
+  // Optimize for Chinese characters
+  &:lang(zh),
+  &:lang(zh-HK),
+  &:lang(zh-TW) {
+    font-family: vars.$font-family-chinese;
+    font-size: #{if(sass($size == vars.$font-size-base): vars.$font-size-chinese-base; else: $size * 1.125)};
+    line-height: vars.$line-height-relaxed;
+  }
 }
 
 // Layout that adapts to text length variations
 @mixin flexible-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: vars.$spacing-md;
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$spacing-md;
 
-    // Adjust for longer Chinese text
-    &:lang(zh),
-    &:lang(zh-HK),
-    &:lang(zh-TW) {
-        gap: vars.$spacing-lg;
-    }
+  // Adjust for longer Chinese text
+  &:lang(zh),
+  &:lang(zh-HK),
+  &:lang(zh-TW) {
+    gap: vars.$spacing-lg;
+  }
 }
 
 // Brand button styling
 @mixin brand-button($variant: primary) {
-    @include touch-button();
-    @include multilingual-text(vars.$font-size-base);
-    border-radius: vars.$border-radius-lg;
-    font-weight: vars.$font-weight-semibold;
-    border: 2px solid transparent;
+  @include touch-button();
+  @include multilingual-text(vars.$font-size-base);
+  border-radius: vars.$border-radius-lg;
+  font-weight: vars.$font-weight-semibold;
+  border: 2px solid transparent;
 
-    @if $variant == primary {
-        background: vars.$color-primary;
-        color: vars.$color-white;
+  @if $variant == primary {
+    background: vars.$color-primary;
+    color: vars.$color-white;
 
-        &:hover:not(:disabled) {
-            background: vars.$color-primary-hover;
-            box-shadow: vars.$shadow-md;
-        }
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-hover;
+      box-shadow: vars.$shadow-md;
     }
+  } @else if $variant == secondary {
+    background: transparent;
+    color: vars.$color-primary;
+    border-color: vars.$color-primary;
 
-    @else if $variant == secondary {
-        background: transparent;
-        color: vars.$color-primary;
-        border-color: vars.$color-primary;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-primary-light;
-        }
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-light;
     }
+  }
 }

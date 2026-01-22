@@ -1,186 +1,186 @@
-@use '../../styles/variables' as vars;
-@use '../../styles/mixins';
+@use "../../styles/variables" as vars;
+@use "../../styles/mixins";
 
 .necktie-timeslot {
-    @include mixins.multilingual-text();
+  @include mixins.multilingual-text();
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: vars.$spacing-sm vars.$spacing-md;
-    border: 1px solid vars.$color-gray-300;
-    border-radius: vars.$border-radius-lg;
-    background: vars.$color-white;
-    color: vars.$color-dark;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$spacing-sm vars.$spacing-md;
+  border: 1px solid vars.$color-gray-300;
+  border-radius: vars.$border-radius-lg;
+  background: vars.$color-white;
+  color: vars.$color-dark;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
 
-    &:hover:not(&--disabled) {
-        background: vars.$color-primary-light;
-        border-color: vars.$color-primary;
-        color: vars.$color-primary;
-        transform: translateY(-1px);
-        box-shadow: vars.$shadow-sm;
+  &:hover:not(&--disabled) {
+    background: vars.$color-primary-light;
+    border-color: vars.$color-primary;
+    color: vars.$color-primary;
+    transform: translateY(-1px);
+    box-shadow: vars.$shadow-sm;
+  }
+
+  &:active:not(&--disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  &--selected {
+    background: vars.$color-primary;
+    border-color: vars.$color-primary;
+    color: vars.$color-white;
+    font-weight: 600;
+    box-shadow: vars.$shadow-sm;
+
+    &:hover {
+      background: vars.$color-dark;
+      border-color: vars.$color-dark;
+      transform: translateY(-1px);
+      box-shadow: vars.$shadow-md;
     }
+  }
 
-    &:active:not(&--disabled) {
-        transform: translateY(0);
-        box-shadow: none;
+  &--disabled {
+    background: vars.$color-gray-100;
+    border-color: vars.$color-gray-200;
+    color: vars.$color-gray-400;
+    cursor: not-allowed;
+
+    &:hover {
+      background: vars.$color-gray-100;
+      border-color: vars.$color-gray-200;
+      color: vars.$color-gray-400;
+      transform: none;
+      box-shadow: none;
     }
-
-    &--selected {
-        background: vars.$color-primary;
-        border-color: vars.$color-primary;
-        color: vars.$color-white;
-        font-weight: 600;
-        box-shadow: vars.$shadow-sm;
-
-        &:hover {
-            background: vars.$color-dark;
-            border-color: vars.$color-dark;
-            transform: translateY(-1px);
-            box-shadow: vars.$shadow-md;
-        }
-    }
-
-    &--disabled {
-        background: vars.$color-gray-100;
-        border-color: vars.$color-gray-200;
-        color: vars.$color-gray-400;
-        cursor: not-allowed;
-
-        &:hover {
-            background: vars.$color-gray-100;
-            border-color: vars.$color-gray-200;
-            color: vars.$color-gray-400;
-            transform: none;
-            box-shadow: none;
-        }
-    }
+  }
 }
 
 .necktie-timeslot-list {
-    @include mixins.multilingual-text();
+  @include mixins.multilingual-text();
 
-    &__header {
-        margin-bottom: vars.$spacing-lg;
-    }
+  &__header {
+    margin-bottom: vars.$spacing-lg;
+  }
 
-    &__title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: vars.$color-dark;
-        margin: 0 0 vars.$spacing-sm;
-    }
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: vars.$color-dark;
+    margin: 0 0 vars.$spacing-sm;
+  }
 
-    &__date {
-        font-size: 0.875rem;
-        color: vars.$color-gray-600;
-        margin: 0;
-    }
+  &__date {
+    font-size: 0.875rem;
+    color: vars.$color-gray-600;
+    margin: 0;
+  }
 
-    &__slots {
-        display: flex;
-        flex-wrap: wrap;
-        gap: vars.$spacing-sm;
-    }
+  &__slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: vars.$spacing-sm;
+  }
 
-    &--empty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: vars.$spacing-xl;
-        text-align: center;
-    }
+  &--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: vars.$spacing-xl;
+    text-align: center;
+  }
 
-    &__empty-message {
-        font-size: 1rem;
-        color: vars.$color-gray-500;
-        margin: 0;
-    }
+  &__empty-message {
+    font-size: 1rem;
+    color: vars.$color-gray-500;
+    margin: 0;
+  }
 }
 
 // Mobile responsive styles
 @include mixins.mobile-first(mobile) {
-    .necktie-timeslot {
-        padding: vars.$spacing-sm;
-        font-size: 0.8125rem;
-        min-width: 70px;
+  .necktie-timeslot {
+    padding: vars.$spacing-sm;
+    font-size: 0.8125rem;
+    min-width: 70px;
 
-        &:hover:not(&--disabled) {
-            transform: none;
-            box-shadow: none;
-        }
-
-        &--selected:hover {
-            transform: none;
-            box-shadow: vars.$shadow-sm;
-        }
+    &:hover:not(&--disabled) {
+      transform: none;
+      box-shadow: none;
     }
 
-    .necktie-timeslot-list {
-        &__header {
-            margin-bottom: vars.$spacing-md;
-        }
-
-        &__title {
-            font-size: 1rem;
-        }
-
-        &__date {
-            font-size: 0.8125rem;
-        }
-
-        &__slots {
-            gap: vars.$spacing-sm;
-            justify-content: center;
-        }
-
-        &__empty-message {
-            font-size: 0.875rem;
-        }
+    &--selected:hover {
+      transform: none;
+      box-shadow: vars.$shadow-sm;
     }
+  }
+
+  .necktie-timeslot-list {
+    &__header {
+      margin-bottom: vars.$spacing-md;
+    }
+
+    &__title {
+      font-size: 1rem;
+    }
+
+    &__date {
+      font-size: 0.8125rem;
+    }
+
+    &__slots {
+      gap: vars.$spacing-sm;
+      justify-content: center;
+    }
+
+    &__empty-message {
+      font-size: 0.875rem;
+    }
+  }
 }
 
 @include mixins.mobile-first(tablet) {
-    .necktie-timeslot {
-        padding: vars.$spacing-sm vars.$spacing-md;
-        font-size: 0.875rem;
-        min-width: 80px;
+  .necktie-timeslot {
+    padding: vars.$spacing-sm vars.$spacing-md;
+    font-size: 0.875rem;
+    min-width: 80px;
 
-        &:hover:not(&--disabled) {
-            transform: translateY(-1px);
-            box-shadow: vars.$shadow-sm;
-        }
-
-        &--selected:hover {
-            transform: translateY(-1px);
-            box-shadow: vars.$shadow-md;
-        }
+    &:hover:not(&--disabled) {
+      transform: translateY(-1px);
+      box-shadow: vars.$shadow-sm;
     }
 
-    .necktie-timeslot-list {
-        &__header {
-            margin-bottom: vars.$spacing-lg;
-        }
-
-        &__title {
-            font-size: 1.125rem;
-        }
-
-        &__date {
-            font-size: 0.875rem;
-        }
-
-        &__slots {
-            gap: vars.$spacing-sm;
-            justify-content: flex-start;
-        }
-
-        &__empty-message {
-            font-size: 1rem;
-        }
+    &--selected:hover {
+      transform: translateY(-1px);
+      box-shadow: vars.$shadow-md;
     }
+  }
+
+  .necktie-timeslot-list {
+    &__header {
+      margin-bottom: vars.$spacing-lg;
+    }
+
+    &__title {
+      font-size: 1.125rem;
+    }
+
+    &__date {
+      font-size: 0.875rem;
+    }
+
+    &__slots {
+      gap: vars.$spacing-sm;
+      justify-content: flex-start;
+    }
+
+    &__empty-message {
+      font-size: 1rem;
+    }
+  }
 }

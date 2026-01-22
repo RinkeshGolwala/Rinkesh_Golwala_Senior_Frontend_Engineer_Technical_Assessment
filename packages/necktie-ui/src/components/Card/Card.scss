@@ -1,213 +1,210 @@
-@use '../../styles/variables' as vars;
-@use '../../styles/mixins';
+@use "../../styles/variables" as vars;
+@use "../../styles/mixins";
 
 .necktie-card {
-    @include mixins.card();
-    @include mixins.multilingual-text();
+  @include mixins.card();
+  @include mixins.multilingual-text();
 
-    position: relative;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: vars.$border-radius-lg;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+
+  // Variant styles
+  &--default {
+    background: vars.$color-white;
+    border: 1px solid vars.$color-gray-200;
+    box-shadow: vars.$shadow-sm;
+  }
+
+  &--elevated {
+    background: vars.$color-white;
+    border: none;
+    box-shadow: vars.$shadow-md;
+
+    &:hover {
+      box-shadow: vars.$shadow-lg;
+    }
+  }
+
+  &--outlined {
+    background: vars.$color-white;
+    border: 2px solid vars.$color-gray-300;
+    box-shadow: none;
+  }
+
+  &--interactive {
+    background: vars.$color-white;
+    border: 1px solid vars.$color-primary;
+    box-shadow: vars.$shadow-sm;
+
+    &:hover {
+      border-color: vars.$color-primary-hover;
+      box-shadow: vars.$shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Interactive states
+  &--interactive {
+    cursor: pointer;
+    @include mixins.focus-outline();
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: vars.$shadow-sm;
+    }
+  }
+
+  // Padding variations
+  &--padding-none {
+    padding: 0;
+
+    .necktie-card__header,
+    .necktie-card__content,
+    .necktie-card__footer {
+      padding: 0;
+    }
+  }
+
+  &--padding-sm {
+    .necktie-card__header,
+    .necktie-card__content,
+    .necktie-card__footer {
+      padding: vars.$spacing-md;
+    }
+  }
+
+  &--padding-md {
+    .necktie-card__header,
+    .necktie-card__content,
+    .necktie-card__footer {
+      padding: vars.$spacing-lg;
+    }
+  }
+
+  &--padding-lg {
+    .necktie-card__header,
+    .necktie-card__content,
+    .necktie-card__footer {
+      padding: vars.$spacing-xl;
+    }
+  }
+
+  // Card sections
+  &__header {
     display: flex;
-    flex-direction: column;
-    border-radius: vars.$border-radius-lg;
-    transition: all 0.2s ease-in-out;
-    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid vars.$color-gray-200;
+    font-weight: vars.$font-weight-semibold;
+    color: vars.$color-dark;
 
-    // Variant styles
-    &--default {
-        background: vars.$color-white;
-        border: 1px solid vars.$color-gray-200;
-        box-shadow: vars.$shadow-sm;
+    &:last-child {
+      border-bottom: none;
     }
+  }
 
-    &--elevated {
-        background: vars.$color-white;
-        border: none;
-        box-shadow: vars.$shadow-md;
+  &__content {
+    flex: 1;
+    color: vars.$color-medium;
+    line-height: vars.$line-height-relaxed;
+  }
 
-        &:hover {
-            box-shadow: vars.$shadow-lg;
-        }
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid vars.$color-gray-200;
+    margin-top: auto;
+
+    &:first-child {
+      border-top: none;
     }
+  }
 
-    &--outlined {
-        background: vars.$color-white;
-        border: 2px solid vars.$color-gray-300;
-        box-shadow: none;
+  // Loading state
+  &--loading {
+    pointer-events: none;
+
+    .necktie-card__content,
+    .necktie-card__header,
+    .necktie-card__footer {
+      opacity: 0.6;
     }
+  }
 
-    &--interactive {
-        background: vars.$color-white;
-        border: 1px solid vars.$color-primary;
-        box-shadow: vars.$shadow-sm;
+  &__loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(vars.$color-white, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 
-        &:hover {
-            border-color: vars.$color-primary-hover;
-            box-shadow: vars.$shadow-md;
-            transform: translateY(-2px);
-        }
+    &::after {
+      content: "";
+      width: 24px;
+      height: 24px;
+      border: 2px solid vars.$color-gray-300;
+      border-top: 2px solid vars.$color-primary;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
-
-    // Interactive states
-    &--interactive {
-        cursor: pointer;
-        @include mixins.focus-outline();
-
-        &:active {
-            transform: translateY(0);
-            box-shadow: vars.$shadow-sm;
-        }
-    }
-
-    // Padding variations
-    &--padding-none {
-        padding: 0;
-
-        .necktie-card__header,
-        .necktie-card__content,
-        .necktie-card__footer {
-            padding: 0;
-        }
-    }
-
-    &--padding-sm {
-
-        .necktie-card__header,
-        .necktie-card__content,
-        .necktie-card__footer {
-            padding: vars.$spacing-md;
-        }
-    }
-
-    &--padding-md {
-
-        .necktie-card__header,
-        .necktie-card__content,
-        .necktie-card__footer {
-            padding: vars.$spacing-lg;
-        }
-    }
-
-    &--padding-lg {
-
-        .necktie-card__header,
-        .necktie-card__content,
-        .necktie-card__footer {
-            padding: vars.$spacing-xl;
-        }
-    }
-
-    // Card sections
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid vars.$color-gray-200;
-        font-weight: vars.$font-weight-semibold;
-        color: vars.$color-dark;
-
-        &:last-child {
-            border-bottom: none;
-        }
-    }
-
-    &__content {
-        flex: 1;
-        color: vars.$color-medium;
-        line-height: vars.$line-height-relaxed;
-    }
-
-    &__footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-top: 1px solid vars.$color-gray-200;
-        margin-top: auto;
-
-        &:first-child {
-            border-top: none;
-        }
-    }
-
-    // Loading state
-    &--loading {
-        pointer-events: none;
-
-        .necktie-card__content,
-        .necktie-card__header,
-        .necktie-card__footer {
-            opacity: 0.6;
-        }
-    }
-
-    &__loading-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(vars.$color-white, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-
-        &::after {
-            content: '';
-            width: 24px;
-            height: 24px;
-            border: 2px solid vars.$color-gray-300;
-            border-top: 2px solid vars.$color-primary;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-    }
+  }
 }
 
 // Doctor card specific styles
 .necktie-card--doctor {
-    .necktie-card__header {
-        background: vars.$color-primary-light;
-        color: vars.$color-dark;
-        border-bottom-color: vars.$color-primary;
-    }
+  .necktie-card__header {
+    background: vars.$color-primary-light;
+    color: vars.$color-dark;
+    border-bottom-color: vars.$color-primary;
+  }
 
-    .necktie-card__content {
-        @include mixins.flexible-layout();
-    }
+  .necktie-card__content {
+    @include mixins.flexible-layout();
+  }
 }
 
-// Booking card specific styles  
+// Booking card specific styles
 .necktie-card--booking {
-    .necktie-card__header {
-        background: vars.$color-gray-100;
-    }
+  .necktie-card__header {
+    background: vars.$color-gray-100;
+  }
 
-    &.necktie-card--confirmed {
-        border-left: 4px solid vars.$color-success;
-    }
+  &.necktie-card--confirmed {
+    border-left: 4px solid vars.$color-success;
+  }
 
-    &.necktie-card--cancelled {
-        border-left: 4px solid vars.$color-danger;
-        opacity: 0.8;
-    }
+  &.necktie-card--cancelled {
+    border-left: 4px solid vars.$color-danger;
+    opacity: 0.8;
+  }
 
-    &.necktie-card--pending {
-        border-left: 4px solid vars.$color-warning;
-    }
+  &.necktie-card--pending {
+    border-left: 4px solid vars.$color-warning;
+  }
 }
 
 // Mobile optimizations
 @include mixins.mobile-first(tablet) {
-    .necktie-card {
-        &--interactive:hover {
-            transform: translateY(-4px);
-            box-shadow: vars.$shadow-xl;
-        }
+  .necktie-card {
+    &--interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: vars.$shadow-xl;
     }
+  }
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }

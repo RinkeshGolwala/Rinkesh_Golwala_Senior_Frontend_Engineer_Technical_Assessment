@@ -1,268 +1,268 @@
-@use '../../styles/variables' as vars;
-@use '../../styles/mixins';
+@use "../../styles/variables" as vars;
+@use "../../styles/mixins";
 
 .necktie-button {
-    @include mixins.brand-button();
-    @include mixins.focus-outline();
+  @include mixins.brand-button();
+  @include mixins.focus-outline();
 
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: vars.$spacing-sm;
-    border: 2px solid transparent;
-    border-radius: vars.$border-radius-lg;
-    font-weight: vars.$font-weight-semibold;
-    text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$spacing-sm;
+  border: 2px solid transparent;
+  border-radius: vars.$border-radius-lg;
+  font-weight: vars.$font-weight-semibold;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+  }
+
+  // Size variations
+  &--sm {
+    min-height: 36px;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    font-size: vars.$font-size-sm;
+  }
+
+  &--md {
+    min-height: vars.$touch-target-min;
+    padding: vars.$spacing-md vars.$spacing-lg;
+    font-size: vars.$font-size-base;
+  }
+
+  &--lg {
+    min-height: 52px;
+    padding: vars.$spacing-lg vars.$spacing-xl;
+    font-size: vars.$font-size-lg;
+  }
+
+  // Variant styles
+  &--primary {
+    background: vars.$color-primary;
+    color: vars.$color-white;
+    border-color: vars.$color-primary;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-hover;
+      border-color: vars.$color-primary-hover;
+      box-shadow: vars.$shadow-md;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: vars.$shadow-sm;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: vars.$color-primary;
+    border-color: vars.$color-primary;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-light;
+      box-shadow: vars.$shadow-sm;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      background: rgba(vars.$color-primary, 0.1);
+    }
+  }
+
+  &--danger {
+    background: vars.$color-danger;
+    color: vars.$color-white;
+    border-color: vars.$color-danger;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-danger-hover;
+      box-shadow: vars.$shadow-md;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: vars.$shadow-sm;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: vars.$color-medium;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-gray-100;
+      color: vars.$color-dark;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      background: vars.$color-gray-200;
+    }
+  }
+
+  &--flat {
+    background: transparent;
+    border: 1px solid vars.$color-gray-300;
+    border-radius: vars.$border-radius-md;
+    padding: vars.$spacing-xs vars.$spacing-sm;
     cursor: pointer;
-    user-select: none;
-    transition: all 0.2s ease-in-out;
-    white-space: nowrap;
+    transition: all 0.2s ease;
+    color: vars.$color-dark;
+    font-size: vars.$font-size-sm;
+    font-weight: vars.$font-weight-medium;
+    min-height: auto;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-gray-100;
+      border-color: vars.$color-primary;
+    }
+
+    &:focus {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 2px;
+    }
 
     &:disabled {
-        cursor: not-allowed;
-        opacity: 0.6;
-        transform: none;
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
-    // Size variations
-    &--sm {
-        min-height: 36px;
-        padding: vars.$spacing-sm vars.$spacing-md;
-        font-size: vars.$font-size-sm;
+    .necktie-button__spinner circle {
+      stroke: vars.$color-primary;
     }
+  }
 
-    &--md {
-        min-height: vars.$touch-target-min;
-        padding: vars.$spacing-md vars.$spacing-lg;
-        font-size: vars.$font-size-base;
-    }
+  // Loading state
+  &--loading {
+    color: transparent;
 
-    &--lg {
-        min-height: 52px;
-        padding: vars.$spacing-lg vars.$spacing-xl;
-        font-size: vars.$font-size-lg;
-    }
+    .necktie-button__spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
 
-    // Variant styles
-    &--primary {
-        background: vars.$color-primary;
-        color: vars.$color-white;
-        border-color: vars.$color-primary;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-primary-hover;
-            border-color: vars.$color-primary-hover;
-            box-shadow: vars.$shadow-md;
-        }
-
-        &:active:not(:disabled) {
-            transform: translateY(0);
-            box-shadow: vars.$shadow-sm;
-        }
-    }
-
-    &--secondary {
-        background: transparent;
-        color: vars.$color-primary;
-        border-color: vars.$color-primary;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-primary-light;
-            box-shadow: vars.$shadow-sm;
-        }
-
-        &:active:not(:disabled) {
-            transform: translateY(0);
-            background: rgba(vars.$color-primary, 0.1);
-        }
-    }
-
-    &--danger {
-        background: vars.$color-danger;
-        color: vars.$color-white;
-        border-color: vars.$color-danger;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-danger-hover;
-            box-shadow: vars.$shadow-md;
-        }
-
-        &:active:not(:disabled) {
-            transform: translateY(0);
-            box-shadow: vars.$shadow-sm;
-        }
-    }
-
-    &--ghost {
-        background: transparent;
-        color: vars.$color-medium;
-        border-color: transparent;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-gray-100;
-            color: vars.$color-dark;
-        }
-
-        &:active:not(:disabled) {
-            transform: translateY(0);
-            background: vars.$color-gray-200;
-        }
-    }
-
-    &--flat {
-        background: transparent;
-        border: 1px solid vars.$color-gray-300;
-        border-radius: vars.$border-radius-md;
-        padding: vars.$spacing-xs vars.$spacing-sm;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        color: vars.$color-dark;
-        font-size: vars.$font-size-sm;
-        font-weight: vars.$font-weight-medium;
-        min-height: auto;
-
-        &:hover:not(:disabled) {
-            background: vars.$color-gray-100;
-            border-color: vars.$color-primary;
-        }
-
-        &:focus {
-            outline: 2px solid vars.$color-primary;
-            outline-offset: 2px;
-        }
-
-        &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .necktie-button__spinner circle {
-            stroke: vars.$color-primary;
-        }
-    }
-
-    // Loading state
-    &--loading {
-        color: transparent;
-
-        .necktie-button__spinner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 24px;
-            height: 24px;
-
-            svg {
-                width: 100%;
-                height: 100%;
-                animation: spin 1s linear infinite;
-            }
-
-            circle {
-                stroke: vars.$color-white;
-                animation: dash 1.5s ease-in-out infinite;
-            }
-        }
-
-        &.necktie-button--secondary,
-        &.necktie-button--ghost,
-        &.necktie-button--flat {
-            .necktie-button__spinner circle {
-                stroke: vars.$color-primary;
-            }
-        }
-    }
-
-    // Full width
-    &--full-width {
+      svg {
         width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+      }
+
+      circle {
+        stroke: vars.$color-white;
+        animation: dash 1.5s ease-in-out infinite;
+      }
     }
 
-    // Icon only button
-    &--icon-only {
-        aspect-ratio: 1;
-        padding: 0;
+    &.necktie-button--secondary,
+    &.necktie-button--ghost,
+    &.necktie-button--flat {
+      .necktie-button__spinner circle {
+        stroke: vars.$color-primary;
+      }
+    }
+  }
 
-        &.necktie-button--sm {
-            width: 36px;
-        }
+  // Full width
+  &--full-width {
+    width: 100%;
+  }
 
-        &.necktie-button--md {
-            width: vars.$touch-target-min;
-        }
+  // Icon only button
+  &--icon-only {
+    aspect-ratio: 1;
+    padding: 0;
 
-        &.necktie-button--lg {
-            width: 52px;
-        }
+    &.necktie-button--sm {
+      width: 36px;
     }
 
-    // Icon spacing
-    &__start-icon,
-    &__end-icon {
-        display: flex;
-        align-items: center;
-        font-size: 1.2em;
+    &.necktie-button--md {
+      width: vars.$touch-target-min;
     }
 
-    &__text {
-        @include mixins.multilingual-text();
+    &.necktie-button--lg {
+      width: 52px;
     }
+  }
+
+  // Icon spacing
+  &__start-icon,
+  &__end-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+
+  &__text {
+    @include mixins.multilingual-text();
+  }
 }
 
 // Loading animations
 @keyframes spin {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes dash {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-    }
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
 
-    50% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -35;
-    }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35;
+  }
 
-    100% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -124;
-    }
+  100% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -124;
+  }
 }
 
 // tablet optimizations
 @include mixins.mobile-first(tablet) {
-    .necktie-button {
-        &:hover:not(:disabled) {
-            box-shadow: vars.$shadow-lg;
-            transform: none;
-        }
+  .necktie-button {
+    &:hover:not(:disabled) {
+      box-shadow: vars.$shadow-lg;
+      transform: none;
     }
+  }
 }
 
 // desktop optimizations
 @include mixins.mobile-first(desktop) {
-    .necktie-button {
-        &--primary,
-        &--secondary,
-        &--danger {
-            &:hover:not(:disabled) {
-                transform: translateY(-2px);
-            }
-        }
-
-        &--ghost {
-            &:hover:not(:disabled) {
-                transform: translateY(-1px);
-            }
-        }
+  .necktie-button {
+    &--primary,
+    &--secondary,
+    &--danger {
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+      }
     }
+
+    &--ghost {
+      &:hover:not(:disabled) {
+        transform: translateY(-1px);
+      }
+    }
+  }
 }

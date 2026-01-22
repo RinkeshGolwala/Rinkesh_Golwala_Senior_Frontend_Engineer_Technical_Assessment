@@ -1,5 +1,5 @@
-@use '../../styles/variables' as vars;
-@use '../../styles/mixins';
+@use "../../styles/variables" as vars;
+@use "../../styles/mixins";
 
 .necktie-layout {
   @include mixins.multilingual-text();
@@ -63,7 +63,9 @@
       z-index: vars.$z-modal-backdrop;
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0.3s, opacity 0.3s;
+      transition:
+        visibility 0.3s,
+        opacity 0.3s;
 
       @include mixins.mobile-first(tablet) {
         display: none;
