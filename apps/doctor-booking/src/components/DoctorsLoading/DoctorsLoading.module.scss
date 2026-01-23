@@ -1,7 +1,12 @@
 @use "@/styles/mixins";
 
 .doctorsLoading {
-  padding: 2rem 0;
+  padding: 2rem;
+  margin: auto;
+
+  @include mixins.mobile-first(tablet) {
+    padding: 2rem 4rem;
+  }
 }
 
 .doctorsSkeletonGrid {
