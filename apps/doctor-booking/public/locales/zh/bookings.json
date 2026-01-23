@@ -1,4 +1,23 @@
 {
+  "page": {
+    "title": "我的预约",
+    "description": "查看和管理您即将到来的和过去的医生预约。您所做的预约将显示在这里。",
+    "sectionTitle": "即将到来和过去的预约",
+    "sectionDescription": "您的所有预约都在这里。"
+  },
+  "card": {
+    "appointment": "预约",
+    "status": {
+      "confirmed": "已确认",
+      "cancelled": "已取消"
+    },
+    "cancelBooking": "取消预约",
+    "bookingId": "预约编号：",
+    "doctor": "医生：",
+    "doctorPrefix": "医生",
+    "date": "日期：",
+    "name": "姓名："
+  },
   "confirmation": {
     "title": "确认您的预约",
     "appointmentDetails": "预约详情",

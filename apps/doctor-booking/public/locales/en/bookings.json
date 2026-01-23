@@ -1,4 +1,23 @@
 {
+  "page": {
+    "title": "My Bookings",
+    "description": "View and manage your upcoming and past doctor appointments. Bookings you make will appear here.",
+    "sectionTitle": "Upcoming & Past Bookings",
+    "sectionDescription": "All your appointments in one place."
+  },
+  "card": {
+    "appointment": "Appointment",
+    "status": {
+      "confirmed": "CONFIRMED",
+      "cancelled": "CANCELLED"
+    },
+    "cancelBooking": "Cancel booking",
+    "bookingId": "Booking Id:",
+    "doctor": "Doctor:",
+    "doctorPrefix": "Dr. ",
+    "date": "Date:",
+    "name": "Name:"
+  },
   "confirmation": {
     "title": "Confirm Your Appointment",
     "appointmentDetails": "Appointment Details",

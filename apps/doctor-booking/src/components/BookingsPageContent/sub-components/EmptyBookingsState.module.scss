@@ -1,0 +1,32 @@
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.icon {
+  color: var(--color-text-secondary, rgb(104, 113, 136));
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+
+.content h3 {
+  color: var(--color-text-primary, rgb(42, 46, 66));
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.content p {
+  color: var(--color-text-secondary, rgb(104, 113, 136));
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}

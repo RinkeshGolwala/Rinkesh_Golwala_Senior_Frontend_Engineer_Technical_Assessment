@@ -41,6 +41,16 @@ export function useBookings(): UseBookingsState & UseBookingsActions {
       const response: ApiResponse<BookingsListResponse> = await getBookings();
 
       if (response.success && response.data) {
+        // Sort by status ('confirmed' first), then by date descending
+        const sortedData = response.data.sort((a, b) => {
+          // First, sort by status: 'confirmed' first
+          if (a.status === 'confirmed' && b.status !== 'confirmed') return -1;
+          if (a.status !== 'confirmed' && b.status === 'confirmed') return 1;
+          // If status is the same, sort by date ascending
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        });
+        response.data = sortedData;
+
         setState((prev) => ({
           ...prev,
           data: response.data!,
