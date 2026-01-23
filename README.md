@@ -2,7 +2,7 @@
 
 A modern doctor booking application built with Next.js, TypeScript, and a custom component library (`necktie-ui`). The project demonstrates a hybrid SSR/CSR architecture for optimal performance, SEO, and mobile-first UX. Internationalization (English/Traditional Chinese) and accessibility are core priorities.
 
-**Live Demo:** [rinkesh-golwala-senior-frontend-eng.vercel.app](https://rinkesh-golwala-senior-frontend-eng.vercel.app/)
+**Live Demo:** [https://doctor-booking-necktie.vercel.app](https://doctor-booking-necktie.vercel.app/)
 
 ---
 

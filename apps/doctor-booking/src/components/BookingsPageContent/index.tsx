@@ -26,7 +26,7 @@ const BookingsPageContent: React.FC<BookingsPageContentProps> = ({
   bookings,
   refresh,
 }) => {
-  const { loading, success, cancelBooking } = useCancelBooking();
+  const { success, cancelBooking } = useCancelBooking();
 
   useEffect(() => {
     if (success) {
@@ -97,7 +97,6 @@ const BookingsPageContent: React.FC<BookingsPageContentProps> = ({
                             <Button
                               variant="danger"
                               size="sm"
-                              loading={loading}
                               onClick={() => cancelBooking(booking.id)}
                             >
                               {t('card.cancelBooking', 'Cancel booking')}
