@@ -26,8 +26,7 @@ A modern doctor booking application built with Next.js, TypeScript, and a custom
 - **SSR/CSR Hybrid:** SEO-optimized doctor listing/details (SSR), interactive booking flow (CSR)
 - **Component Library:** Reusable, mobile-first UI components with Storybook docs
 - **Internationalization:** English & Traditional Chinese, locale-aware routing
-- **Mobile-First:** Responsive layouts, touch-friendly controls, micro-animations TODO
-- **Accessibility:** ARIA attributes, keyboard navigation, color contrast TODO
+- **Mobile-First:** Responsive layouts, touch-friendly controls, micro-animations
 - **Monorepo:** pnpm workspace, turbo build, strict linting, commit hooks
 
 ---
